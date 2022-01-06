@@ -13,6 +13,7 @@ export const configsContext = atom({
     Speed: true,
     Accuracy: true,
     lsnIndex: 0,
+    storyIndex: 0,
     language: 'English',
   },
   effects_UNSTABLE: [persistAtom],

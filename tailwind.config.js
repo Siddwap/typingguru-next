@@ -12,6 +12,7 @@ module.exports = {
       redressed: ['Redressed', 'cursive'],
       ropa_sans: ['Ropa Sans', 'sans-serif'],
       rhodium_libre: ['Rhodium Libre', 'serif'],
+      roboto_mono: ['Roboto Mono', 'monospace'],
     },
     extend: {
       colors: {

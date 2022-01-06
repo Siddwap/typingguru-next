@@ -40,6 +40,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   &.typing-view * {
     font: 40px/40px Nepali;
   }
+
+  &.story-typing {
+    font: Nepali;
+  }
 }
 .Hindi {
   .letter,
@@ -49,6 +53,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 
   &.typing-view * {
     font: 40px/40px Hindi;
+  }
+
+  &.story-typing {
+    font: Hindi;
   }
 }
 .Bengali {
@@ -60,6 +68,9 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   &.typing-view * {
     font: 40px/40px Bengali;
   }
+  &.story-typing {
+    font: Bengali;
+  }
 }
 .English {
   .letter,
@@ -69,6 +80,9 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 
   &.typing-view * {
     font: 40px/40px English;
+  }
+  &.story-typing {
+    font: English;
   }
 }
 .Punjabi {
@@ -80,6 +94,9 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   &.typing-view * {
     font: 40px/40px Punjabi;
   }
+  &.story-typing {
+    font: Punjabi;
+  }
 }
 .Tamil {
   .letter,
@@ -90,6 +107,9 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   &.typing-view * {
     font: 40px/40px Tamil;
   }
+  &.story-typing {
+    font: Tamil;
+  }
 }
 .Urdu {
   .letter,
@@ -99,6 +119,9 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 
   &.typing-view * {
     font: 40px/40px Urdu;
+  }
+  &.story-typing {
+    font: Urdu;
   }
 }
 
@@ -423,5 +446,12 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
         padding-right: 0.5rem;
       }
     }
+  }
+}
+
+.cursor {
+  &::after {
+    @apply absolute h-5 bg-blue-400 w-[2px] bottom-1 right-[calc(100%-2px)];
+    content: "";
   }
 }

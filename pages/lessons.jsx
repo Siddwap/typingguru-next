@@ -37,12 +37,6 @@ const Lessons = () => {
 
   const [configs, setConfigs] = useRecoilState(configsContext);
 
-  const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme(configs.Dark ? 'dark' : 'light');
-  }, [configs.Dark]);
-
   const [hintText, sethintText] = useState('');
   const isShiftOn = (key) => {
     if (!key) return false;
@@ -160,8 +154,17 @@ const Lessons = () => {
   }, [configs.language]);
 
   return (
-    <div className="flex flex-col min-w-min min-h-screen bg-gray-50 min-w-[1080px] dark:bg-gray-700">
-      <Header {...{ index, lsnIndex: configs.lsnIndex, speed, accuracy }} />
+    <div className="flex flex-col min-w-min min-h-screen bg-gray-50 min-w-[1080px]">
+      <Header
+        {...{
+          index,
+          lsnIndex: configs.lsnIndex,
+          speed,
+          accuracy,
+          page: 'Lessons',
+        }}
+        isWithLesson
+      />
       <div
         className={classNames('flex flex-col items-center py-12 gap-6 flex-1', {
           'justify-center relative pb-24': !configs.Keyboard,

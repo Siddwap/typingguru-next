@@ -47,7 +47,7 @@ const Home = () => {
 
                 {
                   link: '/issues',
-                  label: 'Issue/Recommendation',
+                  label: 'Issues/Feedback',
                   icon: <FaRecycle />,
                 },
               ].map(({ link, label, icon }) => {

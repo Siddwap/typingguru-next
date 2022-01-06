@@ -147,6 +147,7 @@ const Lessons = () => {
   useEffect(() => {
     setgrandMainStrng(lessonList[configs.lsnIndex]);
     setindex(0);
+    setwrongInputCount(0);
     setspeed(null);
     handleStrings();
     setrefresh(!refresh);
@@ -155,6 +156,7 @@ const Lessons = () => {
   useEffect(() => {
     setspeed(null);
     setindex(0);
+    setwrongInputCount(0);
   }, [configs.language]);
 
   return (

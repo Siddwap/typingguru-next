@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/custom-stories": "pages/custom-stories.html",
+  "/": "pages/index.html",
+  "/issues": "pages/issues.html",
+  "/lessons": "pages/lessons.html",
+  "/random-type": "pages/random-type.html",
+  "/stories": "pages/stories.html",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}

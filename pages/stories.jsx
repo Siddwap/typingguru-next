@@ -14,9 +14,12 @@ const Stories = () => {
 
   const [configs, setConfigs] = useRecoilState(configsContext);
 
-  if (!configs.storyIndex) {
-    setConfigs({ ...configs, storyIndex: 0 });
-  }
+  useEffect(() => {
+    if (configs.storyIndex === undefined) {
+      setConfigs({ ...configs, storyIndex: 0 });
+    }
+  }, [configs]);
+
   const [wrongKey, setwrongKey] = useState(null);
 
   const [activeKey, setactiveKey] = useState(null);

@@ -3,7 +3,7 @@ import Footer from '@components/atoms/footer';
 
 const CustomStories = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen min-w-[1080px] bg-gray-50">
       <div className="flex justify-center">
         <div className="header flex gap-6 w-full max-w-screen-xl p-3 py-6">
           <div className="flex">

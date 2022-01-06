@@ -3,7 +3,7 @@ import Footer from '@components/atoms/footer';
 import { motion } from 'framer-motion';
 import { createRef, useEffect, useState } from 'react';
 import Keyboard from '@components/templates/keyboard';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { configsContext } from '@commons/context/recoil-context';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
@@ -25,7 +25,7 @@ const Stories = () => {
   const [activeKey, setactiveKey] = useState(null);
 
   const [grandString, setGrandString] = useState(
-    StoryList[configs.storyIndex] || 0
+    StoryList[configs.storyIndex || 0]
   );
 
   const [mainString, setmainString] = useState('');
@@ -93,7 +93,7 @@ const Stories = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('speed', speed);
+      // console.log('speed', speed);
       if (!speed) {
         setspeed({
           speed: 0,
@@ -101,12 +101,12 @@ const Stories = () => {
           end: 0,
         });
       } else {
-        console.log(speed, 'skiped');
+        // console.log(speed, 'skiped');
         if (
           speed.end !== 0 &&
           speed.end.getSeconds() === new Date().getSeconds()
         ) {
-          console.log(speed, 'skiped');
+          // console.log(speed, 'skiped');
           return;
         }
         setspeed((s) => {

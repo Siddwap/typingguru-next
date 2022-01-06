@@ -179,6 +179,7 @@ const Header = ({
   isWithStories = false,
   isWithCustomStories = false,
   isRandomType = false,
+  isIssuePage = false,
   page = '',
 }) => {
   const [configs, setConfigs] = useRecoilState(configsContext);
@@ -201,43 +202,32 @@ const Header = ({
 
       <div className="flex justify-center z-10">
         <div className="flex gap-6 w-full max-w-screen-xl p-3 py-6">
-          <span className="flex flex-col fixed text-primary-900 text-xs tracking-wider gap-2 left-6 top-32">
+          <span className="flex flex-col fixed text-primary-900 text-base font-redressed tracking-wider gap-1 left-6 top-32">
             <Link href="/">
-              <a className="hover:text-primary-500 relative -left-2 top-1">
-                Home
-              </a>
+              <a className="hover:text-primary-500 relative -left-3">Home</a>
             </Link>
-            <div className="-rotate-90 relative top-12 left-[4.5rem] origin-bottom-left flex flex-col items-end uppercase border-r border-primary-900">
-              <Link href="/lessons">
-                <a className="hover:text-primary-500 flex gap-2">
-                  Lessons
-                  <span>&lt;-</span>
-                </a>
-              </Link>
-              <Link href="/stories">
-                <a className="hover:text-primary-500 flex gap-2">
-                  Stories
-                  <span>&lt;-</span>
-                </a>
-              </Link>
-              <Link href="/custom-stories">
-                <a className="hover:text-primary-500 flex gap-2">
-                  Custom Stories
-                  <span>&lt;-</span>
-                </a>
-              </Link>
-              <Link href="/random-type">
-                <a className="hover:text-primary-500 flex gap-2">
-                  Random Type
-                  <span>&lt;-</span>
-                </a>
-              </Link>
-              <Link href="/issues">
-                <a className="hover:text-primary-500 flex gap-2">
-                  Issues
-                  <span>&lt;-</span>
-                </a>
-              </Link>
+            <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900">
+              {[
+                { link: '/lessons', label: 'Lessons' },
+                { link: '/stories', label: 'Stories' },
+                { link: '/custom-stories', label: 'Custom Stories' },
+                { link: '/random-type', label: 'Random Type' },
+                { link: '/issues', label: 'Issues' },
+              ].map(({ link, label }) => (
+                <Link key={link} href={link}>
+                  <a
+                    className={classNames('hover:text-primary-500 flex gap-2', {
+                      'text-red-900':
+                        page.toLowerCase() === label.toLowerCase(),
+                      'text-primary-900':
+                        page.toLowerCase() !== label.toLowerCase(),
+                    })}
+                  >
+                    <span>-&gt;</span>
+                    {label}
+                  </a>
+                </Link>
+              ))}
             </div>
           </span>
 
@@ -247,135 +237,111 @@ const Header = ({
                 <a>
                   <h1 className="text-primary-900 text-2xl font-resique cursor-pointer select-none inline-flex relative">
                     <span className="whitespace-pre">Typing Guru</span>
-                    <span className="font-rhodium_libre text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-8px)] right-0 capitalize">
+                    <span className="font-rhodium_libre text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-5px)] right-0 capitalize">
                       {page}
                     </span>
                   </h1>
                 </a>
               </Link>
             </div>
-            <div className="flex gap-6">
-              {!isRandomType && (
-                <>
-                  {configs.Progress && (
-                    <Card
-                      varient="sm"
-                      className="font-redressed px-8 w-[10rem]"
-                    >
-                      <div>Progress</div>
 
-                      <div className="text-right my-1">
-                        <span className="text-3xl">
-                          {(
-                            (index / lessonList[lsnIndex].length) *
-                            100
-                          ).toFixed(0)}
-                        </span>{' '}
-                        <span>% done</span>
-                      </div>
-                    </Card>
-                  )}
-                  {configs.Speed && (
-                    <Card
-                      varient="sm"
-                      className="font-redressed px-8 w-[10rem]"
-                    >
-                      <div>Speed</div>
-                      <div className="text-right my-1">
-                        <span className="text-3xl">
-                          {(speed && (speed.speed > 300 ? 0 : speed.speed)) ||
-                            0}
-                        </span>{' '}
-                        <span>wpm</span>
-                      </div>
-                    </Card>
-                  )}
+            {!isIssuePage && (
+              <div className="flex gap-6">
+                {!isRandomType && (
+                  <>
+                    {configs.Progress && (
+                      <Card
+                        varient="sm"
+                        className="font-redressed px-8 w-[10rem]"
+                      >
+                        <div>Progress</div>
 
-                  {configs.Accuracy && (
-                    <Card
-                      varient="sm"
-                      className="font-redressed px-8 w-[10rem]"
-                    >
-                      <div>Accuracy</div>
-                      <div className="text-right my-1">
-                        <span className="text-3xl">{accuracy}</span>{' '}
-                        <span>%</span>
-                      </div>
-                    </Card>
-                  )}
-                </>
-              )}
+                        <div className="text-right my-1">
+                          <span className="text-3xl">
+                            {(
+                              (index / lessonList[lsnIndex].length) *
+                              100
+                            ).toFixed(0)}
+                          </span>{' '}
+                          <span>% done</span>
+                        </div>
+                      </Card>
+                    )}
+                    {configs.Speed && (
+                      <Card
+                        varient="sm"
+                        className="font-redressed px-8 w-[10rem]"
+                      >
+                        <div>Speed</div>
+                        <div className="text-right my-1">
+                          <span className="text-3xl">
+                            {(speed && (speed.speed > 300 ? 0 : speed.speed)) ||
+                              0}
+                          </span>{' '}
+                          <span>wpm</span>
+                        </div>
+                      </Card>
+                    )}
 
-              <div className="flex flex-col gap-3 font-rhodium_libre justify-between">
-                <motion.div
-                  whileTap={{ y: 2 }}
-                  className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
-                  onClick={() => {
-                    setLanguageModal((s) => !s);
-                  }}
-                >
-                  {configs.language}
-                  <FiChevronDown />
-                </motion.div>
+                    {configs.Accuracy && (
+                      <Card
+                        varient="sm"
+                        className="font-redressed px-8 w-[10rem]"
+                      >
+                        <div>Accuracy</div>
+                        <div className="text-right my-1">
+                          <span className="text-3xl">{accuracy}</span>{' '}
+                          <span>%</span>
+                        </div>
+                      </Card>
+                    )}
+                  </>
+                )}
 
-                {isWithLesson && (
+                <div className="flex flex-col gap-3 font-rhodium_libre justify-between">
                   <motion.div
                     whileTap={{ y: 2 }}
                     className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
                     onClick={() => {
-                      setLessonModal((s) => !s);
+                      setLanguageModal((s) => !s);
                     }}
                   >
-                    {`Lesson ${lsnIndex + 1}`}
+                    {configs.language}
                     <FiChevronDown />
                   </motion.div>
-                )}
-                {isWithStories && (
-                  <motion.div
-                    whileTap={{ y: 2 }}
-                    className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
-                    onClick={() => {
-                      setStoriesModal((s) => !s);
-                    }}
-                  >
-                    {`Story ${storyIndex + 1}`}
-                    <FiChevronDown />
-                  </motion.div>
-                )}
-              </div>
 
-              <div className="flex flex-col gap-2 text-primary-900 py-1">
-                {['Keyboard', 'Hands', 'Dark'].map((item) => {
-                  const iconClass = 'text-xl relative bottom-1';
-                  if (item === 'Hands' && !configs.Keyboard) {
-                    return null;
-                  }
-                  return (
+                  {isWithLesson && (
                     <motion.div
                       whileTap={{ y: 2 }}
-                      key={item}
-                      className="flex items-center font-rhodium_libre gap-1 select-none cursor-pointer"
+                      className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
                       onClick={() => {
-                        setConfigs((s) => ({
-                          ...s,
-                          [item]: !configs[item],
-                        }));
+                        setLessonModal((s) => !s);
                       }}
                     >
-                      {configs[item] ? (
-                        <MdOutlineCheckBox className={iconClass} />
-                      ) : (
-                        <MdCheckBoxOutlineBlank className={iconClass} />
-                      )}
-                      {item}
+                      {`Lesson ${lsnIndex + 1}`}
+                      <FiChevronDown />
                     </motion.div>
-                  );
-                })}
-              </div>
-              {!isRandomType && (
-                <div className="flex flex-col py-1 gap-2 text-primary-900">
-                  {['Progress', 'Speed', 'Accuracy'].map((item) => {
+                  )}
+                  {isWithStories && (
+                    <motion.div
+                      whileTap={{ y: 2 }}
+                      className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
+                      onClick={() => {
+                        setStoriesModal((s) => !s);
+                      }}
+                    >
+                      {`Story ${storyIndex + 1}`}
+                      <FiChevronDown />
+                    </motion.div>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-2 text-primary-900 py-1">
+                  {['Keyboard', 'Hands', 'Dark'].map((item) => {
                     const iconClass = 'text-xl relative bottom-1';
+                    if (item === 'Hands' && !configs.Keyboard) {
+                      return null;
+                    }
                     return (
                       <motion.div
                         whileTap={{ y: 2 }}
@@ -398,8 +364,35 @@ const Header = ({
                     );
                   })}
                 </div>
-              )}
-            </div>
+                {!isRandomType && (
+                  <div className="flex flex-col py-1 gap-2 text-primary-900">
+                    {['Progress', 'Speed', 'Accuracy'].map((item) => {
+                      const iconClass = 'text-xl relative bottom-1';
+                      return (
+                        <motion.div
+                          whileTap={{ y: 2 }}
+                          key={item}
+                          className="flex items-center font-rhodium_libre gap-1 select-none cursor-pointer"
+                          onClick={() => {
+                            setConfigs((s) => ({
+                              ...s,
+                              [item]: !configs[item],
+                            }));
+                          }}
+                        >
+                          {configs[item] ? (
+                            <MdOutlineCheckBox className={iconClass} />
+                          ) : (
+                            <MdCheckBoxOutlineBlank className={iconClass} />
+                          )}
+                          {item}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* {children} */}

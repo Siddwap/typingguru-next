@@ -1,30 +1,60 @@
-import Link from 'next/link';
+import Header from '@components/atoms/header';
 import Footer from '@components/atoms/footer';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import Keyboard from '@components/templates/keyboard';
+import { useRecoilValue } from 'recoil';
+import { configsContext } from '@commons/context/recoil-context';
+import classNames from 'classnames';
 
 const RandomType = () => {
+  const configs = useRecoilValue(configsContext);
+
+  const [activeKey, setactiveKey] = useState(null);
+  const [value, setValue] = useState('');
+
   return (
-    <div className="flex flex-col min-h-screen min-w-[1080px] bg-gray-50">
-      <div className="flex justify-center">
-        <div className="header flex gap-6 w-full max-w-screen-xl p-3 py-6">
-          <div className="flex">
-            <Link href="/">
-              <h1 className="text-primary-900 text-2xl font-resique cursor-pointer select-none">
-                Typing Guru
-              </h1>
-            </Link>
+    <div className="flex flex-col min-w-min min-h-screen bg-gray-50 min-w-[1080px]">
+      <Header
+        {...{
+          page: 'Random Type',
+          isRandomType: true,
+        }}
+      />
+
+      <div
+        className={classNames('flex flex-col items-center py-12 gap-6 flex-1', {
+          'justify-center relative pb-24': !configs.Keyboard,
+          'justify-end': configs.Keyboard,
+        })}
+      >
+        <motion.textarea
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.25 }}
+          spellCheck="false"
+          autoComplete="off"
+          autoCorrect="off"
+          className={`freeTA tracking-wide font-roboto_mono text-primary-900 text-xl max-w-screen-md bg-primary-50 shadow-xl rounded-lg p-3 relative bottom-16 xl:bottom-12 w-full min-h-[10rem] ${configs.language}`}
+          onKeyPress={(e) => setactiveKey(e)}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+
+        {configs.Keyboard && (
+          <div className="flex max-w-screen-xl w-full">
+            <Keyboard
+              showHand={configs.Hands}
+              activeKey={activeKey}
+              // wrongKey={wrongKey}
+              className={`${configs.language} day`}
+            />
           </div>
-        </div>
-      </div>
-      <div className="flex-1 flex justify-center pb-32 ">
-        <span className="text-primary-900 font-bold text-xl">
-          This Page is under construction.
-        </span>
+        )}
       </div>
       <Footer />
     </div>
   );
 };
-
-RandomType.SSR = true;
 
 export default RandomType;

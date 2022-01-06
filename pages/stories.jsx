@@ -39,7 +39,7 @@ const Stories = () => {
     return false;
   };
 
-  const strLen = 200;
+  const strLen = 50;
 
   const [index, setindex] = useState(0);
 
@@ -183,7 +183,7 @@ const Stories = () => {
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.25 }}
             className={classNames(
-              'story-typing tracking-wide font-roboto_mono text-xl max-w-screen-md bg-primary-50 shadow-xl rounded-lg p-3 relative bottom-16 xl:bottom-12',
+              'story-typing tracking-wide text-xl max-w-screen-md bg-primary-50 shadow-xl rounded-lg p-3 relative bottom-16 xl:bottom-12',
               configs.language
             )}
           >

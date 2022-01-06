@@ -44,6 +44,7 @@ const Home = () => {
                   label: 'Random Type',
                   icon: <FaRandom />,
                 },
+
                 {
                   link: '/issues',
                   label: 'Issue/Recommendation',

@@ -26,6 +26,7 @@ const LanguageList = [
 const LessonsSelector = ({ visible, setVisible }) => {
   const [configs, setConfigs] = useRecoilState(configsContext);
   const ref = useRef();
+
   return (
     <OverlayMenu visible={visible} setVisible={setVisible} container_ref={ref}>
       <div className="flex justify-center items-center fixed bg-black w-full h-full z-20 bg-opacity-75 top-0 left-0 font-rhodium_libre cursor-pointer">
@@ -177,6 +178,7 @@ const Header = ({
   isWithLesson = false,
   isWithStories = false,
   isWithCustomStories = false,
+  isRandomType = false,
   page = '',
 }) => {
   const [configs, setConfigs] = useRecoilState(configsContext);
@@ -253,38 +255,57 @@ const Header = ({
               </Link>
             </div>
             <div className="flex gap-6">
-              {configs.Progress && (
-                <Card varient="sm" className="font-redressed px-8 w-[10rem]">
-                  <div>Progress</div>
+              {!isRandomType && (
+                <>
+                  {configs.Progress && (
+                    <Card
+                      varient="sm"
+                      className="font-redressed px-8 w-[10rem]"
+                    >
+                      <div>Progress</div>
 
-                  <div className="text-right my-1">
-                    <span className="text-3xl">
-                      {((index / lessonList[lsnIndex].length) * 100).toFixed(0)}
-                    </span>{' '}
-                    <span>% done</span>
-                  </div>
-                </Card>
-              )}
-              {configs.Speed && (
-                <Card varient="sm" className="font-redressed px-8 w-[10rem]">
-                  <div>Speed</div>
-                  <div className="text-right my-1">
-                    <span className="text-3xl">
-                      {(speed && (speed.speed > 300 ? 0 : speed.speed)) || 0}
-                    </span>{' '}
-                    <span>wpm</span>
-                  </div>
-                </Card>
+                      <div className="text-right my-1">
+                        <span className="text-3xl">
+                          {(
+                            (index / lessonList[lsnIndex].length) *
+                            100
+                          ).toFixed(0)}
+                        </span>{' '}
+                        <span>% done</span>
+                      </div>
+                    </Card>
+                  )}
+                  {configs.Speed && (
+                    <Card
+                      varient="sm"
+                      className="font-redressed px-8 w-[10rem]"
+                    >
+                      <div>Speed</div>
+                      <div className="text-right my-1">
+                        <span className="text-3xl">
+                          {(speed && (speed.speed > 300 ? 0 : speed.speed)) ||
+                            0}
+                        </span>{' '}
+                        <span>wpm</span>
+                      </div>
+                    </Card>
+                  )}
+
+                  {configs.Accuracy && (
+                    <Card
+                      varient="sm"
+                      className="font-redressed px-8 w-[10rem]"
+                    >
+                      <div>Accuracy</div>
+                      <div className="text-right my-1">
+                        <span className="text-3xl">{accuracy}</span>{' '}
+                        <span>%</span>
+                      </div>
+                    </Card>
+                  )}
+                </>
               )}
 
-              {configs.Accuracy && (
-                <Card varient="sm" className="font-redressed px-8 w-[10rem]">
-                  <div>Accuracy</div>
-                  <div className="text-right my-1">
-                    <span className="text-3xl">{accuracy}</span> <span>%</span>
-                  </div>
-                </Card>
-              )}
               <div className="flex flex-col gap-3 font-rhodium_libre justify-between">
                 <motion.div
                   whileTap={{ y: 2 }}
@@ -351,32 +372,33 @@ const Header = ({
                   );
                 })}
               </div>
-
-              <div className="flex flex-col py-1 gap-2 text-primary-900">
-                {['Progress', 'Speed', 'Accuracy'].map((item) => {
-                  const iconClass = 'text-xl relative bottom-1';
-                  return (
-                    <motion.div
-                      whileTap={{ y: 2 }}
-                      key={item}
-                      className="flex items-center font-rhodium_libre gap-1 select-none cursor-pointer"
-                      onClick={() => {
-                        setConfigs((s) => ({
-                          ...s,
-                          [item]: !configs[item],
-                        }));
-                      }}
-                    >
-                      {configs[item] ? (
-                        <MdOutlineCheckBox className={iconClass} />
-                      ) : (
-                        <MdCheckBoxOutlineBlank className={iconClass} />
-                      )}
-                      {item}
-                    </motion.div>
-                  );
-                })}
-              </div>
+              {!isRandomType && (
+                <div className="flex flex-col py-1 gap-2 text-primary-900">
+                  {['Progress', 'Speed', 'Accuracy'].map((item) => {
+                    const iconClass = 'text-xl relative bottom-1';
+                    return (
+                      <motion.div
+                        whileTap={{ y: 2 }}
+                        key={item}
+                        className="flex items-center font-rhodium_libre gap-1 select-none cursor-pointer"
+                        onClick={() => {
+                          setConfigs((s) => ({
+                            ...s,
+                            [item]: !configs[item],
+                          }));
+                        }}
+                      >
+                        {configs[item] ? (
+                          <MdOutlineCheckBox className={iconClass} />
+                        ) : (
+                          <MdCheckBoxOutlineBlank className={iconClass} />
+                        )}
+                        {item}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 

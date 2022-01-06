@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import React, { useState } from "react";
-import Header from "../Components/Header";
-import Keyboard from "../Components/Keyboard";
+import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import Header from '../Components/Header';
+import Keyboard from '../Components/Keyboard';
 
 function Free(props) {
   const [activeKey, setactiveKey] = useState(null);
@@ -16,13 +16,13 @@ function Free(props) {
         spellCheck="false"
         autoComplete="off"
         autoCorrect="off"
-        className={"freeTA " + props.lang.languageChoice}
+        className={`freeTA ${props.lang.languageChoice}`}
         onKeyPress={(e) => setactiveKey(e)}
       />
       <Keyboard
         activeKey={activeKey}
         lang={props.lang}
-        className={props.lang.languageChoice + " " + props.theme.theme}
+        className={`${props.lang.languageChoice} ${props.theme.theme}`}
       />
     </>
   );

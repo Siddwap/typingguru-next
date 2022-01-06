@@ -41,8 +41,12 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
     font: 40px/40px Nepali;
   }
 
-  &.story-typing {
-    font: Nepali;
+  &.story-typing * {
+    font: 30px/30px Nepali;
+  }
+
+  &.freeTA {
+    font: 30px/30px Nepali;
   }
 }
 .Hindi {
@@ -56,7 +60,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   }
 
   &.story-typing {
-    font: Hindi;
+    font: 30px/30px Hindi;
+  }
+  &.freeTA {
+    font: 30px/30px Hindi;
   }
 }
 .Bengali {
@@ -69,7 +76,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
     font: 40px/40px Bengali;
   }
   &.story-typing {
-    font: Bengali;
+    font: 35px/35px Bengali;
+  }
+  &.freeTA {
+    font: 35px/35px Bengali;
   }
 }
 .English {
@@ -82,7 +92,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
     font: 40px/40px English;
   }
   &.story-typing {
-    font: English;
+    @apply font-roboto_mono;
+  }
+  &.freeTA {
+    font: 30px/30px English;
   }
 }
 .Punjabi {
@@ -95,7 +108,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
     font: 40px/40px Punjabi;
   }
   &.story-typing {
-    font: Punjabi;
+    font: 30px/30px Punjabi;
+  }
+  &.freeTA {
+    font: 30px/30px Punjabi;
   }
 }
 .Tamil {
@@ -108,7 +124,10 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
     font: 40px/40px Tamil;
   }
   &.story-typing {
-    font: Tamil;
+    font: 22px/22px Tamil;
+  }
+  &.freeTA {
+    font: 22px/22px Tamil;
   }
 }
 .Urdu {
@@ -121,9 +140,13 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
     font: 40px/40px Urdu;
   }
   &.story-typing {
-    font: Urdu;
+    font-family: Urdu;
+  }
+  &.freeTA {
+    font: 30px/30px Urdu;
   }
 }
+
 
 /* Keyboard */
 .keyboard {
@@ -451,7 +474,7 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 
 .cursor {
   &::after {
-    @apply absolute h-5 bg-blue-400 w-[2px] bottom-1 right-[calc(100%-2px)];
+    @apply absolute h-5 bg-primary-900 bottom-1 w-[2px] right-[calc(100%-2px)];
     content: "";
   }
 }

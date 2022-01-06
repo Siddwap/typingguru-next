@@ -3,7 +3,7 @@ import Footer from '@components/atoms/footer';
 import { motion } from 'framer-motion';
 import { createRef, useEffect, useState } from 'react';
 import Keyboard from '@components/templates/keyboard';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { configsContext } from '@commons/context/recoil-context';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
@@ -12,13 +12,18 @@ import StoryList from '@components/old/StoryList';
 const Stories = () => {
   const inpRef = createRef();
 
-  const configs = useRecoilValue(configsContext);
+  const [configs, setConfigs] = useRecoilState(configsContext);
 
+  if (!configs.storyIndex) {
+    setConfigs({ ...configs, storyIndex: 0 });
+  }
   const [wrongKey, setwrongKey] = useState(null);
 
   const [activeKey, setactiveKey] = useState(null);
 
-  const [grandString, setGrandString] = useState(StoryList[configs.storyIndex]);
+  const [grandString, setGrandString] = useState(
+    StoryList[configs.storyIndex] || 0
+  );
 
   const [mainString, setmainString] = useState('');
   const [dispStrings, setdispStrings] = useState({

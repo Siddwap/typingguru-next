@@ -1,11 +1,18 @@
 module.exports = {
+  darkMode: 'class',
   mode: 'jit',
-  content: [
+  purge: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './commons/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      resique: ['Risque', 'cursive'],
+      redressed: ['Redressed', 'cursive'],
+      ropa_sans: ['Ropa Sans', 'sans-serif'],
+      rhodium_libre: ['Rhodium Libre', 'serif'],
+    },
     extend: {
       colors: {
         primary: {
@@ -25,4 +32,9 @@ module.exports = {
     },
   },
   plugins: [],
+  variants: {
+    extend: {
+      scale: ['active', 'group-hover'],
+    },
+  },
 };

@@ -9,20 +9,20 @@ const Header = () => {
   const options = [
     { value: 'english', label: 'English' },
     { value: 'hindi', label: 'Hindi' },
-    { value: 'bengali', label: 'Bengali' },
+    { value: 'nepali', label: 'Nepali' },
     { value: 'punjabi', label: 'Punjabi' },
+    { value: 'bengali', label: 'Bengali' },
     { value: 'tamil', label: 'Tamil' },
-    { value: 'telugu', label: 'Telugu' },
-    { value: 'marathi', label: 'Marathi' },
+    { value: 'urdu', label: 'Urdu' },
   ];
+
   return (
-    <div className="flex items-center border-b py-1 pb-2 px-2 border-primary mb-4">
+    <div className="flex items-center border-b py-1 pb-2 px-2 border-primary mb-4 dark:bg-red-500">
       <Select
         options={options}
         value={language}
         onChange={(e) => setLanguage(e)}
         className="flex"
-        isSearchable
       />
     </div>
   );

@@ -3,10 +3,17 @@ import { atom } from 'recoil';
 
 const { persistAtom } = recoilPersist();
 
-export const languageContext = atom({
-  key: 'languageContext',
-  default: {},
+export const configsContext = atom({
+  key: 'configsContext',
+  default: {
+    Hand: true,
+    Keyboard: true,
+    Dark: false,
+    Progress: true,
+    Speed: true,
+    Accuracy: true,
+    lsnIndex: 0,
+    language: 'English',
+  },
   effects_UNSTABLE: [persistAtom],
 });
-
-

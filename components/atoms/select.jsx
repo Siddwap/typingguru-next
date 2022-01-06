@@ -54,7 +54,7 @@ export const Select = ({
         onFocus={() => {
           setFocused(true);
         }}
-        isSearchable={true}
+        isSearchable
       />
     </div>
   );

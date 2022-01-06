@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import LsnList from "./LsnList";
-import Select from "react-select";
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Select from 'react-select';
+import LsnList from './LsnList';
 
 function Header(props) {
   const { setlsnIndex, lsnIndex } = props;
@@ -12,8 +12,8 @@ function Header(props) {
 
   const getLessons = () => {
     const options = [];
-    for (var i = 0; i < LsnList.length; i++) {
-      options.push(<option value={i}>{"Lesson  " + +(i + 1)}</option>);
+    for (let i = 0; i < LsnList.length; i++) {
+      options.push(<option value={i}>{`Lesson  ${+(i + 1)}`}</option>);
     }
     return options;
   };
@@ -32,62 +32,62 @@ function Header(props) {
     <header>
       <motion.div
         whileTap={{ scale: 1.1 }}
-        whileHover={{ scale: 1.05, boxShadow: "1px 1px 3px #333" }}
+        whileHover={{ scale: 1.05, boxShadow: '1px 1px 3px #333' }}
         transition={{ duration: 0.1 }}
-        className={"mb" + (props.menu === "home" ? " active" : "")}
+        className={`mb${props.menu === 'home' ? ' active' : ''}`}
       >
         <Link to="/">
           <div>
-            <i className="fad fa-home fa-2x"></i>
+            <i className="fad fa-home fa-2x" />
           </div>
           <span>Home</span>
         </Link>
       </motion.div>
       <div className="mb hide">
         <div>
-          <i></i>
+          <i />
         </div>
         <span>Add User</span>
       </div>
       <div className="mb hide">
         <div>
-          <i></i>
+          <i />
         </div>
         <span>Top</span>
       </div>
       <div className="mb hide">
         <div>
-          <i></i>
+          <i />
         </div>
         <span>Bottom</span>
       </div>
       <motion.div
         whileTap={{ scale: 1.1 }}
-        whileHover={{ scale: 1.05, boxShadow: "1px 1px 3px #333" }}
+        whileHover={{ scale: 1.05, boxShadow: '1px 1px 3px #333' }}
         transition={{ duration: 0.1 }}
-        className={"mb" + (props.menu === "stories" ? " active" : "")}
+        className={`mb${props.menu === 'stories' ? ' active' : ''}`}
       >
         <Link to="/stories-typing">
           <div>
-            <i className="fad fa-book-open fa-2x"></i>
+            <i className="fad fa-book-open fa-2x" />
           </div>
           <span>Stories</span>
         </Link>
       </motion.div>
       <motion.div
         whileTap={{ scale: 1.1 }}
-        whileHover={{ scale: 1.05, boxShadow: "1px 1px 3px #333" }}
+        whileHover={{ scale: 1.05, boxShadow: '1px 1px 3px #333' }}
         transition={{ duration: 0.1 }}
-        className={"mb" + (props.menu === "free" ? " active" : "")}
+        className={`mb${props.menu === 'free' ? ' active' : ''}`}
       >
         <Link to="/free-typing">
           <div>
-            <i className="fad fa-keyboard fa-2x"></i>
+            <i className="fad fa-keyboard fa-2x" />
           </div>
           <span>Free</span>
         </Link>
       </motion.div>
-      <div className={"lev-selector" + (props.menu !== "home" ? " hide" : "")}>
+      <div className={`lev-selector${props.menu !== 'home' ? ' hide' : ''}`}>
         <motion.div
           whileTap={{ scale: 1.1 }}
           whileHover={{ scale: 1.05 }}
@@ -96,9 +96,9 @@ function Header(props) {
             setlsnIndex(0);
             setlevSelector(1);
           }}
-          className={levSelector === 1 ? "active" : ""}
+          className={levSelector === 1 ? 'active' : ''}
         >
-          <i></i> Level 1
+          <i /> Level 1
         </motion.div>
         <motion.div
           whileTap={{ scale: 1.1 }}
@@ -108,9 +108,9 @@ function Header(props) {
             setlsnIndex(18);
             setlevSelector(2);
           }}
-          className={levSelector === 2 ? "active" : ""}
+          className={levSelector === 2 ? 'active' : ''}
         >
-          <i></i> Level 2
+          <i /> Level 2
         </motion.div>
         <motion.div
           whileTap={{ scale: 1.1 }}
@@ -120,9 +120,9 @@ function Header(props) {
             setlsnIndex(35);
             setlevSelector(3);
           }}
-          className={levSelector === 3 ? "active" : ""}
+          className={levSelector === 3 ? 'active' : ''}
         >
-          <i></i> Level 3
+          <i /> Level 3
         </motion.div>
       </div>
       <motion.div
@@ -131,7 +131,6 @@ function Header(props) {
         transition={{ duration: 0.1 }}
         className="lang-selector-and-info"
       >
-        
         <motion.select
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 1 }}
@@ -171,14 +170,14 @@ function Header(props) {
           transition={{ duration: 0.1 }}
           onChange={(e) => setlsnIndex(e.target.value)}
           value={lsnIndex}
-          className={"lev-selector" + (props.menu !== "home" ? " hide" : "")}
+          className={`lev-selector${props.menu !== 'home' ? ' hide' : ''}`}
         >
           {getLessons()}
         </motion.select>
 
         <div>
           <div>
-            <i></i>
+            <i />
           </div>
           <div>
             <div>
@@ -186,7 +185,7 @@ function Header(props) {
               <span className="hide">Guest User</span>
             </div>
 
-            <div className={props.menu === "stories" ? "hide" : ""}>
+            <div className={props.menu === 'stories' ? 'hide' : ''}>
               Avg Speed:
               <span className="avg-speed">
                 {props.speed ? props.speed.speed : 0}

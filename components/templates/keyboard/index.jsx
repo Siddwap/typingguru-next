@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Key from './key';
 import Hand from './hand';
 
-function Keyboard({ activeKey: aKey, wrongKey: wKey, className }) {
+function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
   const [activeKey, setactiveKey] = useState(null);
 
   const [wrongKey, setwrongKey] = useState(null);
@@ -730,8 +730,8 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className }) {
   ];
 
   return (
-    <section className="flex items-center">
-      <Hand activeKey={activeKey} wrongKey={wrongKey} leftHand />
+    <section className="flex items-baseline w-full justify-center text-primary-900 relative bottom-16">
+      {showHand && <Hand activeKey={activeKey} wrongKey={wrongKey} leftHand />}
       <motion.div
         initial={{ scale: 0, rotate: 30 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -760,7 +760,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className }) {
       </motion.div>
       {/* //   <!-- end sec-func --> */}
 
-      <Hand activeKey={activeKey} wrongKey={wrongKey} rightHand />
+      {showHand && <Hand activeKey={activeKey} wrongKey={wrongKey} rightHand />}
     </section>
   );
 }

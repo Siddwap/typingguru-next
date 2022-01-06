@@ -121,7 +121,8 @@ const Stories = () => {
           Number(
             (
               100 -
-              (Object.keys(errorIndex).length / (mainIndex + index)) * 100
+                (Object.keys(errorIndex).length / (mainIndex + index)) * 100 ||
+              100
             ).toFixed(0)
           )
         );

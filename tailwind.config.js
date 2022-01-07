@@ -16,6 +16,19 @@ module.exports = {
     },
     extend: {
       colors: {
+        dark: {
+          primary: {
+            900: '#A783F8',
+            50: '#181a1b',
+          },
+          background: {
+            DEFAULT: '#1b1d1e',
+            keyboard: '#222426'
+          },
+          red: {
+            900: '#e17d7d',
+          },
+        },
         primary: {
           DEFAULT: '#8B5CF6',
           50: '#FFFFFF',

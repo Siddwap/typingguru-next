@@ -8,6 +8,7 @@ import { configsContext } from '@commons/context/recoil-context';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
 import StoryList from '@components/old/StoryList';
+import CBody from '@components/atoms/cbody';
 
 const Stories = () => {
   const inpRef = createRef();
@@ -167,7 +168,7 @@ const Stories = () => {
   }, [configs.storyIndex]);
 
   return (
-    <div className="flex flex-col min-w-min min-h-screen bg-gray-50 min-w-[1080px]">
+    <CBody>
       <Header
         {...{
           index,
@@ -191,7 +192,7 @@ const Stories = () => {
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.25 }}
             className={classNames(
-              'story-typing tracking-wide text-xl max-w-screen-md bg-primary-50 shadow-xl rounded-lg p-3 relative bottom-16 xl:bottom-12',
+              'story-typing tracking-wide text-xl max-w-screen-md bg-primary-50 dark:bg-dark-primary-50 shadow-xl rounded-lg p-3 relative bottom-16 xl:bottom-12',
               configs.language
             )}
           >
@@ -237,7 +238,7 @@ const Stories = () => {
         )}
       </div>
       <Footer />
-    </div>
+    </CBody>
   );
 };
 

@@ -1,21 +1,10 @@
 import Header from '@components/atoms/header';
 import Footer from '@components/atoms/footer';
-import { motion } from 'framer-motion';
-import { createRef, useEffect, useState } from 'react';
-import Keyboard from '@components/templates/keyboard';
-import { useRecoilState } from 'recoil';
-import { configsContext } from '@commons/context/recoil-context';
-import { shiftOnKeyList } from '@components/lessons';
-import classNames from 'classnames';
-import StoryList from '@components/old/StoryList';
+import CBody from '@components/atoms/cbody';
 
 const CustomStories = () => {
-  const inpRef = createRef();
-
-  const [configs, setConfigs] = useRecoilState(configsContext);
-
   return (
-    <div className="flex flex-col min-w-min min-h-screen bg-gray-50 min-w-[1080px]">
+    <CBody>
       <Header
         {...{
           page: 'Issues',
@@ -26,7 +15,7 @@ const CustomStories = () => {
         This Feature is under development.
       </div>
       <Footer />
-    </div>
+    </CBody>
   );
 };
 

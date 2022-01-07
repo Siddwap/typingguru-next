@@ -8,15 +8,16 @@ import {
 } from 'react-icons/fa';
 import Link from 'next/link';
 import Footer from '@components/atoms/footer';
+import CBody from '@components/atoms/cbody';
 
 const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen min-w-[1080px] bg-gray-50">
+    <CBody>
       <div className="flex justify-center">
         <div className="header flex gap-6 w-full max-w-screen-xl p-3 py-6">
           <div className="flex">
             <Link href="/">
-              <h1 className="text-primary-900 text-2xl font-resique cursor-pointer select-none">
+              <h1 className="text-2xl font-resique cursor-pointer select-none">
                 Typing Guru
               </h1>
             </Link>
@@ -67,7 +68,7 @@ const Home = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </CBody>
   );
 };
 

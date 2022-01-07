@@ -6,7 +6,7 @@ const Card = ({ children, className = '', varient = 'lg' }) => (
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 1 }}
     className={classNames(
-      `bg-primary-50 shadow-lg text-primary-900 rounded-xl flex flex-col select-none cursor-pointer`,
+      `bg-primary-50 dark:bg-dark-primary-50 shadow-lg rounded-xl flex flex-col select-none cursor-pointer`,
       className,
       {
         'p-6 gap-6': varient === 'lg',

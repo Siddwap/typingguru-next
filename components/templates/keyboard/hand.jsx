@@ -1,9 +1,24 @@
 import classNames from 'classnames';
+import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import tailwind from '../../../tailwind.config';
 
 const LargePaths = () => {
-  const color = tailwind.theme.extend.colors.primary[900];
+  const { theme, setTheme } = useTheme();
+  const [color, setColor] = useState(
+    theme === 'dark'
+      ? tailwind.theme.extend.colors.dark.primary[900]
+      : tailwind.theme.extend.colors.primary[900]
+  );
+
+  useEffect(() => {
+    setColor(
+      theme === 'dark'
+        ? tailwind.theme.extend.colors.dark.primary[900]
+        : tailwind.theme.extend.colors.primary[900]
+    );
+  }, [theme]);
+
   return (
     <g transform="matrix(.87464 0 0 -.85185 33.879 592.871)">
       <path
@@ -162,7 +177,7 @@ const Hand = ({ activeKey, wrongKey, leftHand = false, rightHand = false }) => {
       version="1"
       viewBox="0 0 540.501 640.304"
       xmlSpace="preserve"
-    className={classNames('flex-1 h-[15rem] xl:h-auto xl:pb-10', {
+      className={classNames('flex-1 h-[15rem] xl:h-auto xl:pb-10', {
         'flip-x hand-mr': leftHand,
         'hand-ml': rightHand,
       })}

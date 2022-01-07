@@ -16,18 +16,22 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-gray-200;
+  @apply bg-gray-200 dark:bg-gray-800;
   box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.29);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary rounded-lg cursor-pointer;
+  @apply bg-primary dark:bg-primary-900 rounded-lg cursor-pointer;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary;
+  @apply bg-primary dark:bg-primary-900;
+}
+
+html {
+  @apply dark:bg-gray-800;
 }
 
 /* Fonts */
@@ -147,7 +151,6 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   }
 }
 
-
 /* Keyboard */
 .keyboard {
   box-sizing: initial;
@@ -169,9 +172,11 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
   }
   &.day,
   &.night {
-    background-color: rgb(238, 238, 238);
+    @apply bg-gray-200 dark:bg-[#25282a];
+
     .key {
-      background-color: white;
+      @apply bg-white dark:bg-[#1b1d1e];
+      /* background-color: white; */
       &.active {
         @keyframes active-blink {
           0% {
@@ -188,7 +193,7 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
           }
         }
         // animation: active-blink 1s infinite;
-        background-color: rgb(225, 188, 255);
+        @apply bg-[#2b2e30] dark:bg-[#2b2e30];
       }
       &.wrong-active {
         @keyframes wrong-active-blink {
@@ -430,7 +435,7 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
       &:nth-child(1) {
         padding-right: 0;
         & > .virtual {
-          @apply text-primary-900 opacity-25 absolute w-[5rem];
+          @apply opacity-25 absolute w-[5rem];
         }
       }
       &:nth-child(2) {
@@ -438,7 +443,6 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
         padding-left: 0;
         position: relative;
         &::before {
-          @apply text-primary-900;
           font: 40px/40px Roboto !important;
           visibility: visible;
           position: absolute;

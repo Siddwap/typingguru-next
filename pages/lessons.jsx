@@ -10,6 +10,7 @@ import lessonList from '@components/lessons/lesson-list';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
+import CBody from '@components/atoms/cbody';
 
 const Lessons = () => {
   // Handle focus of the keyboard
@@ -154,7 +155,7 @@ const Lessons = () => {
   }, [configs.language]);
 
   return (
-    <div className="flex flex-col min-w-min min-h-screen bg-gray-50 min-w-[1080px]">
+    <CBody>
       <Header
         {...{
           index,
@@ -181,7 +182,7 @@ const Lessons = () => {
           )}
         >
           <div>
-            <span className="text-primary-900">
+            <span>
               {mainString.replace(/ /g, '\u00a0')}
               <span className="virtual">
                 {hintText.replace(/ /g, '\u00a0')}
@@ -219,7 +220,7 @@ const Lessons = () => {
         )}
       </div>
       <Footer />
-    </div>
+    </CBody>
   );
 };
 

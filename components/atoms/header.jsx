@@ -7,13 +7,13 @@ import { FiChevronDown, FiX } from 'react-icons/fi';
 
 import { useRecoilState } from 'recoil';
 import OverlayMenu from 'overlaymenu';
-import { useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import StoryList from '@components/old/StoryList';
 import { useTheme } from 'next-themes';
 import Card from './card';
 
-const LanguageList = [
+const languageList = [
   'English',
   'Hindi',
   'Nepali',
@@ -23,148 +23,74 @@ const LanguageList = [
   'Urdu',
 ];
 
-const LessonsSelector = ({ visible, setVisible }) => {
-  const [configs, setConfigs] = useRecoilState(configsContext);
+const Selector = ({
+  visible,
+  setVisible,
+  onSelect,
+  optionList,
+  title,
+  selected,
+}) => {
   const ref = useRef();
 
-  return (
-    <OverlayMenu visible={visible} setVisible={setVisible} container_ref={ref}>
-      <div className="flex justify-center items-center fixed bg-black w-full h-full z-20 bg-opacity-75 top-0 left-0 font-rhodium_libre cursor-pointer">
-        <motion.div
-          whileTap={{ y: 2 }}
-          className="right-6 top-6 bg-primary-300 absolute p-1 text-2xl rounded-full hover:bg-primary-400"
-        >
-          <FiX />
-        </motion.div>
-        <div
-          ref={ref}
-          className="bg-white max-h-[40vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden"
-        >
-          <div className="flex bg-primary-900 text-white p-2 font-bold tracking-wider pb-1">
-            Lessons
-          </div>
-          <div className="flex-1 flex flex-col overflow-y-auto text-primary-900">
-            {lessonList.map((lesson, index) => (
-              <motion.div
-                whileTap={{ y: 2 }}
-                key={lesson}
-                className={classNames(
-                  'flex justify-between items-center hover:bg-gray-200 relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer active:bg-primary-200',
-                  {
-                    'bg-primary-200': configs.lsnIndex === index,
-                  }
-                )}
-                onClick={() => {
-                  setConfigs((prev) => ({
-                    ...prev,
-                    lsnIndex: index,
-                  }));
-                  setVisible(false);
-                }}
-              >
-                Lesson {index + 1}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </OverlayMenu>
+  const refs = optionList.map(() => createRef());
+
+  useEffect(
+    () =>
+      refs[selected].current &&
+      refs[selected].current.scrollIntoView({
+        block: 'center',
+      }),
+    [refs]
   );
-};
-
-const LanguageSelector = ({ visible, setVisible }) => {
-  const [configs, setConfigs] = useRecoilState(configsContext);
-  const ref = useRef();
   return (
     <OverlayMenu visible={visible} setVisible={setVisible} container_ref={ref}>
-      <div className="flex justify-center items-center fixed bg-black w-full h-full z-20 bg-opacity-75 top-0 left-0 font-rhodium_libre cursor-pointer">
+      <motion.div
+        transition={{ duration: 0.2 }}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        className="flex justify-center items-center backdrop-blur-sm fixed w-full h-full z-20 bg-opacity-25 left-0 font-rhodium_libre cursor-pointer"
+      >
         <motion.div
           whileTap={{ y: 2 }}
           className="right-6 top-6 bg-primary-300 absolute p-1 text-2xl rounded-full hover:bg-primary-400"
         >
           <FiX />
         </motion.div>
-
-        <div
-          ref={ref}
-          className="bg-white max-h-[40vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden"
-        >
-          <div className="flex bg-primary-900 text-white p-2 font-bold tracking-wider pb-1">
-            Languages
-          </div>
-          <div className="flex-1 flex flex-col overflow-y-auto text-primary-900">
-            {LanguageList.map((language) => (
-              <motion.div
-                whileTap={{ y: 2 }}
-                key={language}
-                className={classNames(
-                  'flex justify-between items-center hover:bg-gray-200 relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer active:bg-primary-200',
-                  {
-                    'bg-primary-200': configs.language === language,
-                  }
-                )}
-                onClick={() => {
-                  setConfigs((prev) => ({
-                    ...prev,
-                    language,
-                  }));
-                  setVisible(false);
-                }}
-              >
-                {language}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </OverlayMenu>
-  );
-};
-
-const StorySelector = ({ visible, setVisible }) => {
-  const [configs, setConfigs] = useRecoilState(configsContext);
-  const ref = useRef();
-  return (
-    <OverlayMenu visible={visible} setVisible={setVisible} container_ref={ref}>
-      <div className="flex justify-center items-center fixed bg-black w-full h-full z-20 bg-opacity-75 top-0 left-0 font-rhodium_libre cursor-pointer">
         <motion.div
-          whileTap={{ y: 2 }}
-          className="right-6 top-6 bg-primary-300 absolute p-1 text-2xl rounded-full hover:bg-primary-400"
-        >
-          <FiX />
-        </motion.div>
-        <div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           ref={ref}
-          className="bg-white max-h-[40vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden"
+          className="bg-white max-h-[30vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden shadow-xl relative bottom-20"
         >
           <div className="flex bg-primary-900 text-white p-2 font-bold tracking-wider pb-1">
-            Lessons
+            {title}
           </div>
-          <div className="flex-1 flex flex-col overflow-y-auto text-primary-900">
-            {StoryList.map((story, index) => (
+          <div className="flex-1 flex flex-col overflow-y-auto">
+            {optionList.map((option, index) => (
               <motion.div
+                ref={refs[index]}
                 whileTap={{ y: 2 }}
-                key={story}
+                key={option}
                 className={classNames(
                   'flex justify-between items-center hover:bg-gray-200 relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer active:bg-primary-200',
                   {
-                    'bg-primary-200': configs.storyIndex === index,
+                    'bg-primary-200': selected === index,
                   }
                 )}
                 onClick={() => {
-                  setConfigs((prev) => ({
-                    ...prev,
-                    storyIndex: index,
-                  }));
+                  onSelect(index);
                   setVisible(false);
                 }}
               >
-                Story {index + 1}
+                <span>{option}</span>
+                {/* Lesson {index + 1} */}
               </motion.div>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </OverlayMenu>
   );
 };
@@ -196,13 +122,56 @@ const Header = ({
 
   return (
     <>
-      <LessonsSelector visible={lessonModal} setVisible={setLessonModal} />
-      <LanguageSelector visible={languageModal} setVisible={setLanguageModal} />
-      <StorySelector visible={storiesModal} setVisible={setStoriesModal} />
+      <Selector
+        visible={lessonModal}
+        setVisible={setLessonModal}
+        optionList={lessonList.map((_, i) => `Lesson ${i + 1}`)}
+        onSelect={(val) => {
+          setConfigs((prev) => ({
+            ...prev,
+            lsnIndex: val,
+          }));
+        }}
+        selected={configs.lsnIndex}
+        title="Lesson"
+      />
+      <Selector
+        visible={languageModal}
+        setVisible={setLanguageModal}
+        optionList={languageList}
+        onSelect={(val) => {
+          setConfigs((prev) => ({
+            ...prev,
+            language: languageList[val],
+          }));
+        }}
+        selected={languageList.reduce((acc, curr, ind) => {
+          if (acc) return acc;
+          if (curr === configs.language) {
+            return ind;
+          }
+          return acc;
+        }, undefined)}
+        title="Language"
+      />
+
+      <Selector
+        visible={storiesModal}
+        setVisible={setStoriesModal}
+        optionList={StoryList.map((_, i) => `Story${i + 1}`)}
+        onSelect={(val) => {
+          setConfigs((prev) => ({
+            ...prev,
+            storyIndex: val,
+          }));
+        }}
+        selected={configs.storyIndex}
+        title="Story"
+      />
 
       <div className="flex justify-center z-10">
         <div className="flex gap-6 w-full max-w-screen-xl p-3 py-6">
-          <span className="flex flex-col fixed text-primary-900 text-base font-redressed tracking-wider gap-1 left-6 top-32">
+          <span className="flex flex-col fixed text-base font-redressed tracking-wider gap-1 left-6 top-32">
             <Link href="/">
               <a className="hover:text-primary-500 relative -left-3">Home</a>
             </Link>
@@ -217,10 +186,8 @@ const Header = ({
                 <Link key={link} href={link}>
                   <a
                     className={classNames('hover:text-primary-500 flex gap-2', {
-                      'text-red-900':
+                      'text-red-900 dark:text-dark-red-900':
                         page.toLowerCase() === label.toLowerCase(),
-                      'text-primary-900':
-                        page.toLowerCase() !== label.toLowerCase(),
                     })}
                   >
                     <span>-&gt;</span>
@@ -235,7 +202,7 @@ const Header = ({
             <div className="flex-1 relative">
               <Link href="/">
                 <a>
-                  <h1 className="text-primary-900 text-2xl font-resique cursor-pointer select-none inline-flex relative">
+                  <h1 className="text-2xl font-resique cursor-pointer select-none inline-flex relative">
                     <span className="whitespace-pre">Typing Guru</span>
                     <span className="font-rhodium_libre text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-5px)] right-0 capitalize">
                       {page}
@@ -301,7 +268,7 @@ const Header = ({
                 <div className="flex flex-col gap-3 font-rhodium_libre justify-between">
                   <motion.div
                     whileTap={{ y: 2 }}
-                    className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
+                    className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
                     onClick={() => {
                       setLanguageModal((s) => !s);
                     }}
@@ -313,7 +280,7 @@ const Header = ({
                   {isWithLesson && (
                     <motion.div
                       whileTap={{ y: 2 }}
-                      className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
+                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
                       onClick={() => {
                         setLessonModal((s) => !s);
                       }}
@@ -325,7 +292,7 @@ const Header = ({
                   {isWithStories && (
                     <motion.div
                       whileTap={{ y: 2 }}
-                      className="cursor-pointer border border-primary-300 select-none text-primary-900 bg-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 flex items-center gap-2 whitespace-pre justify-between"
+                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
                       onClick={() => {
                         setStoriesModal((s) => !s);
                       }}
@@ -336,7 +303,7 @@ const Header = ({
                   )}
                 </div>
 
-                <div className="flex flex-col gap-2 text-primary-900 py-1">
+                <div className="flex flex-col gap-2 py-1">
                   {['Keyboard', 'Hands', 'Dark'].map((item) => {
                     const iconClass = 'text-xl relative bottom-1';
                     if (item === 'Hands' && !configs.Keyboard) {
@@ -365,7 +332,7 @@ const Header = ({
                   })}
                 </div>
                 {!isRandomType && (
-                  <div className="flex flex-col py-1 gap-2 text-primary-900">
+                  <div className="flex flex-col py-1 gap-2">
                     {['Progress', 'Speed', 'Accuracy'].map((item) => {
                       const iconClass = 'text-xl relative bottom-1';
                       return (
@@ -394,8 +361,6 @@ const Header = ({
               </div>
             )}
           </div>
-
-          {/* {children} */}
         </div>
       </div>
     </>

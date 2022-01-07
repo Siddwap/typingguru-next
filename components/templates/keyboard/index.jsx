@@ -730,7 +730,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
   ];
 
   return (
-    <section className="flex items-baseline w-full justify-center text-primary-900 relative bottom-16">
+    <section className="flex items-baseline w-full justify-center relative bottom-16">
       {showHand && <Hand activeKey={activeKey} wrongKey={wrongKey} leftHand />}
       <motion.div
         initial={{ scale: 0, rotate: 30 }}

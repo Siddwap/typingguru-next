@@ -193,7 +193,7 @@ html {
           }
         }
         // animation: active-blink 1s infinite;
-        @apply bg-[#2b2e30] dark:bg-[#2b2e30];
+        @apply bg-primary-300  dark:bg-[#2b2e30];
       }
       &.wrong-active {
         @keyframes wrong-active-blink {
@@ -235,7 +235,7 @@ html {
   transition: box-shadow 0.2s ease;
 
   &.active {
-    @apply text-[5px] z-[1000];
+    /* @apply z-[1000]; */
 
     border-radius: 0.25rem;
     box-shadow: inset -1px -1px 3px rgba($color: grey, $alpha: 0.29);

@@ -20,22 +20,22 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Redressed&family=Rhodium+Libre&family=Risque&family=Roboto+Mono&family=Ropa+Sans&display=swap"
             rel="stylesheet"
           />
+
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-J7DGFTDF5Q"
+            src="https://www.googletagmanager.com/gtag/js?id=G-QW6470DZ7Z"
           />
 
           <script
             dangerouslySetInnerHTML={{
               __html: `
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-  gtag('config', 'G-J7DGFTDF5Q');
-              gtag('config', '[Tracking ID]', { page_path: window.location.pathname });
-            `,
+              gtag('config', ''G-QW6470DZ7Z', { page_path: window.location.pathname });
+              `,
             }}
           />
         </Head>

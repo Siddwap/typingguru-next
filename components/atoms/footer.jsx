@@ -31,8 +31,8 @@ const Footer = () => {
       <div className="max-w-screen-xl w-full flex justify-between">
         <div className="flex gap-1">
           &copy; {new Date().getFullYear()}{' '}
-          <a href="https://progman.in" className="flex">
-            Progman
+          <a href="https://typing-guru.com" className="flex">
+            Typing Guru
           </a>
         </div>
         {views !== 0 && <div>Total Visits: {views}</div>}

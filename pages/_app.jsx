@@ -10,9 +10,11 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
   const handleRouteChange = (url) => {
-    window.gtag('config', '[Tracking ID]', {
-      page_path: url,
-    });
+    if (window && window.gtag) {
+      window.gtag('config', 'G-QW6470DZ7Z', {
+        page_path: url,
+      });
+    }
   };
 
   useEffect(() => {

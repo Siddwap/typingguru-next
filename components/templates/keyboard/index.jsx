@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import Key from './key';
 import Hand from './hand';
@@ -732,11 +731,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
   return (
     <section className="flex items-baseline w-full justify-center relative bottom-16">
       {showHand && <Hand activeKey={activeKey} wrongKey={wrongKey} leftHand />}
-      <motion.div
-        initial={{ scale: 0, rotate: 30 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ duration: 0.2 }}
-      >
+      <div>
         <div className={`keyboard ${className}`}>
           <div className="section-a">
             {/* <!--END FUNCTION KEYS --> */}
@@ -757,7 +752,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
           </div>
         </div>
         {/* // <!-- end section-a--> */}
-      </motion.div>
+      </div>
       {/* //   <!-- end sec-func --> */}
 
       {showHand && <Hand activeKey={activeKey} wrongKey={wrongKey} rightHand />}

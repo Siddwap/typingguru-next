@@ -62,7 +62,7 @@ const Selector = ({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           ref={ref}
-          className="bg-white max-h-[30vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden shadow-xl relative bottom-20"
+          className="bg-white dark:bg-dark-primary-50  max-h-[30vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden shadow-xl relative bottom-20"
         >
           <div className="flex bg-primary-900 text-white p-2 font-bold tracking-wider pb-1">
             {title}
@@ -74,9 +74,10 @@ const Selector = ({
                 whileTap={{ y: 2 }}
                 key={option}
                 className={classNames(
-                  'flex justify-between items-center hover:bg-gray-200 relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer active:bg-primary-200',
+                  'flex justify-between items-center hover:bg-gray-200  relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer dark:hover:bg-gray-700 dark:hover:text-white',
                   {
-                    'bg-primary-200': selected === index,
+                    'bg-primary-200 dark:bg-gray-700 dark:text-white':
+                      selected === index,
                   }
                 )}
                 onClick={() => {

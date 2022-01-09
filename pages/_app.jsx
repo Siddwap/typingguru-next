@@ -26,6 +26,14 @@ const MyApp = ({ Component, pageProps }) => {
     <ThemeProvider attribute="class">
       <Head>
         <title>Typing Guru</title>
+        <meta name="theme-color" content="#000000" />
+        <meta
+          name="description"
+          content="A complete platform to learn typings and to practice your typing skills. Learn to type faster, get better at typing guru, and improve your typing skills."
+        />
+        <link rel="icon" href="/DialogIcon.png" />
+        <link rel="apple-touch-icon" href="/DialogIcon.png" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <RecoilRoot>
         {!Component.SSR && (

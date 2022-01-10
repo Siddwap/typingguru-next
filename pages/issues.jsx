@@ -2,7 +2,7 @@ import Header from '@components/atoms/header';
 import Footer from '@components/atoms/footer';
 import CBody from '@components/atoms/cbody';
 
-const CustomStories = () => {
+const Issues = () => {
   return (
     <CBody>
       <Header
@@ -19,4 +19,6 @@ const CustomStories = () => {
   );
 };
 
-export default CustomStories;
+Issues.SSR = true;
+
+export default Issues;

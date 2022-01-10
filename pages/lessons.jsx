@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import lessonList from '@components/lessons/lesson-list';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
-import { useTheme } from 'next-themes';
 import CBody from '@components/atoms/cbody';
 
 const Lessons = () => {
@@ -223,5 +222,7 @@ const Lessons = () => {
     </CBody>
   );
 };
+
+Lessons.SSR = true;
 
 export default Lessons;

@@ -19,6 +19,4 @@ const Issues = () => {
   );
 };
 
-Issues.SSR = true;
-
 export default Issues;

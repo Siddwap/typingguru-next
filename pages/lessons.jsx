@@ -223,6 +223,4 @@ const Lessons = () => {
   );
 };
 
-Lessons.SSR = true;
-
 export default Lessons;

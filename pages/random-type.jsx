@@ -58,6 +58,4 @@ const RandomType = () => {
   );
 };
 
-RandomType.SSR = true;
-
 export default RandomType;

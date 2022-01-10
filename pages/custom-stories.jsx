@@ -244,6 +244,4 @@ const CustomStories = () => {
   );
 };
 
-CustomStories.SSR = true;
-
 export default CustomStories;

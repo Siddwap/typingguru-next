@@ -59,7 +59,7 @@ const MyApp = ({ Component, pageProps }) => {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', ''G-QW6470DZ7Z');
+              gtag('config', 'G-QW6470DZ7Z', { page_path: window.location.pathname });
               `,
             }}
           />

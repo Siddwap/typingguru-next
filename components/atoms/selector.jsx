@@ -31,7 +31,7 @@ const Selector = ({
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
-        className="flex justify-center items-center backdrop-blur-sm fixed w-full h-full z-20 bg-opacity-25 left-0 font-rhodium_libre cursor-pointer"
+        className="flex justify-center items-center backdrop-blur-sm fixed w-full h-full z-20 bg-opacity-25 left-0 font-lato cursor-pointer"
       >
         <motion.div
           whileTap={{ y: 2 }}

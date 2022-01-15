@@ -3,7 +3,7 @@ import Footer from '@components/atoms/footer';
 import { motion } from 'framer-motion';
 import { createRef, useEffect, useState } from 'react';
 import Keyboard from '@components/templates/keyboard';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import {
   configsContext,
   customStoriesContext,
@@ -12,10 +12,12 @@ import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
 import CBody from '@components/atoms/cbody';
 
+import { usePersistentRecoilState } from '@components/hooks/use-recoil-presist';
+
 const CustomStories = () => {
   const inpRef = createRef();
 
-  const [configs, setConfigs] = useRecoilState(configsContext);
+  const [configs, setConfigs] = usePersistentRecoilState(configsContext);
   const customStories = useRecoilValue(customStoriesContext);
 
   useEffect(() => {

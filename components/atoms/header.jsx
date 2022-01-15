@@ -7,11 +7,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { MdCheckBoxOutlineBlank, MdOutlineCheckBox } from 'react-icons/md';
 import { FiChevronDown } from 'react-icons/fi';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import StoryList from '@components/old/StoryList';
 import { useTheme } from 'next-themes';
+import { usePersistentRecoilState } from '@components/hooks/use-recoil-presist';
+import StoryList from '@components/lessons/story-list';
 import Card from './card';
 import Selector from './selector';
 import CustomStoriesDialog from './custom-stories-dialog';
@@ -40,7 +41,7 @@ const Header = ({
   isIssuePage = false,
   page = '',
 }) => {
-  const [configs, setConfigs] = useRecoilState(configsContext);
+  const [configs, setConfigs] = usePersistentRecoilState(configsContext);
 
   const [lessonModal, setLessonModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
@@ -142,7 +143,7 @@ const Header = ({
                 <a>
                   <h1 className="text-2xl font-resique cursor-pointer select-none inline-flex relative">
                     <span className="whitespace-pre">Typing Guru</span>
-                    <span className="font-rhodium_libre text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-5px)] right-0 capitalize">
+                    <span className="font-lato text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-5px)] right-0 capitalize">
                       {` ${page}`}
                     </span>
                   </h1>
@@ -156,6 +157,7 @@ const Header = ({
                   <>
                     {configs.Progress && (
                       <Card
+                        cardId="1"
                         varient="sm"
                         className="font-redressed px-8 w-[10rem]"
                       >
@@ -174,6 +176,7 @@ const Header = ({
                     )}
                     {configs.Speed && (
                       <Card
+                        cardId="12"
                         varient="sm"
                         className="font-redressed px-8 w-[10rem]"
                       >
@@ -190,6 +193,7 @@ const Header = ({
 
                     {configs.Accuracy && (
                       <Card
+                        cardId="123"
                         varient="sm"
                         className="font-redressed px-8 w-[10rem]"
                       >
@@ -203,7 +207,7 @@ const Header = ({
                   </>
                 )}
 
-                <div className="flex flex-col gap-3 font-rhodium_libre justify-between">
+                <div className="flex flex-col gap-3 font-lato justify-between">
                   <motion.div
                     whileTap={{ y: 2 }}
                     className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
@@ -267,7 +271,7 @@ const Header = ({
                       <motion.div
                         whileTap={{ y: 2 }}
                         key={item}
-                        className="flex items-center font-rhodium_libre gap-1 select-none cursor-pointer"
+                        className="flex items-center font-lato gap-1 select-none cursor-pointer"
                         onClick={() => {
                           setConfigs((s) => ({
                             ...s,
@@ -293,7 +297,7 @@ const Header = ({
                         <motion.div
                           whileTap={{ y: 2 }}
                           key={item}
-                          className="flex items-center font-rhodium_libre gap-1 select-none cursor-pointer"
+                          className="flex items-center font-lato gap-1 select-none cursor-pointer"
                           onClick={() => {
                             setConfigs((s) => ({
                               ...s,

@@ -12,6 +12,7 @@ module.exports = {
       redressed: ['Redressed', 'cursive'],
       ropa_sans: ['Ropa Sans', 'sans-serif'],
       rhodium_libre: ['Rhodium Libre', 'serif'],
+      lato: ['Lato', 'sans-serif'],
       roboto_mono: ['Roboto Mono', 'monospace'],
     },
     extend: {
@@ -23,7 +24,7 @@ module.exports = {
           },
           background: {
             DEFAULT: '#1b1d1e',
-            keyboard: '#222426'
+            keyboard: '#222426',
           },
           red: {
             900: '#e17d7d',

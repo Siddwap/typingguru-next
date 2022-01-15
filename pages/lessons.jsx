@@ -3,13 +3,14 @@ import Footer from '@components/atoms/footer';
 import { motion } from 'framer-motion';
 import { createRef, useEffect, useState } from 'react';
 import Keyboard from '@components/templates/keyboard';
-import { useRecoilState } from 'recoil';
 import { configsContext } from '@commons/context/recoil-context';
 import { toast } from 'react-toastify';
 import lessonList from '@components/lessons/lesson-list';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
 import CBody from '@components/atoms/cbody';
+
+import { usePersistentRecoilState } from '@components/hooks/use-recoil-presist';
 
 const Lessons = () => {
   // Handle focus of the keyboard
@@ -35,7 +36,7 @@ const Lessons = () => {
   const [wrongInputCount, setwrongInputCount] = useState(0);
   const [accuracy, setAccuracy] = useState(100);
 
-  const [configs, setConfigs] = useRecoilState(configsContext);
+  const [configs, setConfigs] = usePersistentRecoilState(configsContext);
 
   const [hintText, sethintText] = useState('');
   const isShiftOn = (key) => {

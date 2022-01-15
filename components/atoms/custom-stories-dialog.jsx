@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import * as Yup from 'yup';
 import OverlayMenu from 'overlaymenu';
 import {
@@ -10,13 +9,14 @@ import {
 import { FiEdit, FiTrash, FiX } from 'react-icons/fi';
 import classNames from 'classnames';
 import useForm from '@components/hooks/use-form';
+import { usePersistentRecoilState } from '@components/hooks/use-recoil-presist';
 
 const CustomStoriesDialog = ({ visible, setVisible }) => {
-  const [configs, setConfigs] = useRecoilState(configsContext);
+  const [configs, setConfigs] = usePersistentRecoilState(configsContext);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
 
   const [customStories, setCustomStories] =
-    useRecoilState(customStoriesContext);
+    usePersistentRecoilState(customStoriesContext);
 
   const [values, errors, handleChange, handleSubmit, setValues] = useForm({
     initialValues: {
@@ -76,7 +76,7 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
-        className="flex justify-center items-center backdrop-blur-sm fixed w-full h-full z-20 bg-opacity-25 left-0 font-rhodium_libre cursor-pointer"
+        className="flex justify-center items-center backdrop-blur-sm fixed w-full h-full z-20 bg-opacity-25 left-0 font-lato cursor-pointer"
       >
         <motion.div
           initial={{ opacity: 0, y: -10 }}

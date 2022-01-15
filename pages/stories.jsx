@@ -3,17 +3,17 @@ import Footer from '@components/atoms/footer';
 import { motion } from 'framer-motion';
 import { createRef, useEffect, useState } from 'react';
 import Keyboard from '@components/templates/keyboard';
-import { useRecoilState } from 'recoil';
 import { configsContext } from '@commons/context/recoil-context';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
-import StoryList from '@components/old/StoryList';
 import CBody from '@components/atoms/cbody';
+import StoryList from '@components/lessons/story-list';
+import { usePersistentRecoilState } from '@components/hooks/use-recoil-presist';
 
 const Stories = () => {
   const inpRef = createRef();
 
-  const [configs, setConfigs] = useRecoilState(configsContext);
+  const [configs, setConfigs] = usePersistentRecoilState(configsContext);
 
   useEffect(() => {
     if (configs.storyIndex === undefined) {
@@ -241,7 +241,5 @@ const Stories = () => {
     </CBody>
   );
 };
-
-Stories.SSR = true;
 
 export default Stories;

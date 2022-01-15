@@ -21,8 +21,8 @@ const CustomStories = () => {
   const customStories = useRecoilValue(customStoriesContext());
 
   useEffect(() => {
-    if (configs.storyIndex === undefined) {
-      setConfigs({ ...configs, storyIndex: 0 });
+    if (configs.customStoryIndex === undefined) {
+      setConfigs({ ...configs, customStoryIndex: 0 });
     }
   }, [configs]);
 

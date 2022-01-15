@@ -48,7 +48,7 @@ const Header = ({
   const [storiesModal, setStoriesModal] = useState(false);
   const [customStoriesModal, setCustomStoriesModal] = useState(false);
   const { theme, setTheme } = useTheme();
-  const customStories = useRecoilValue(customStoriesContext);
+  const customStories = useRecoilValue(customStoriesContext());
 
   useEffect(() => {
     setTheme(configs.Dark ? 'dark' : 'light');

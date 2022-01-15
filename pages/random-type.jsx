@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import CBody from '@components/atoms/cbody';
 
 const RandomType = () => {
-  const configs = useRecoilValue(configsContext);
+  const configs = useRecoilValue(configsContext());
 
   const [activeKey, setactiveKey] = useState(null);
   const [value, setValue] = useState('');

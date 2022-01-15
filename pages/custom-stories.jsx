@@ -18,7 +18,7 @@ const CustomStories = () => {
   const inpRef = createRef();
 
   const [configs, setConfigs] = usePersistentRecoilState(configsContext);
-  const customStories = useRecoilValue(customStoriesContext);
+  const customStories = useRecoilValue(customStoriesContext());
 
   useEffect(() => {
     if (configs.storyIndex === undefined) {

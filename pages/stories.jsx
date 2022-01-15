@@ -242,4 +242,6 @@ const Stories = () => {
   );
 };
 
+Stories.SSR = true;
+
 export default Stories;

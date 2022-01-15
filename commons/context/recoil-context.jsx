@@ -14,7 +14,15 @@ export const configsContext = atom({
     Accuracy: true,
     lsnIndex: 0,
     storyIndex: 0,
+    customStoryIndex: 0,
     language: 'English',
+    isModalOpen: false,
   },
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const customStoriesContext = atom({
+  key: 'customStories',
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });

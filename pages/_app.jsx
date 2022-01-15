@@ -39,6 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <RecoilRoot>
+        {/* <Component {...pageProps} /> */}
         {!Component.SSR && (
           <SafeHydrate>
             <Component {...pageProps} />

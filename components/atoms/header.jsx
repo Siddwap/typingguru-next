@@ -1,17 +1,20 @@
-import { configsContext } from '@commons/context/recoil-context';
+import {
+  configsContext,
+  customStoriesContext,
+} from '@commons/context/recoil-context';
 import lessonList from '@components/lessons/lesson-list';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { MdCheckBoxOutlineBlank, MdOutlineCheckBox } from 'react-icons/md';
-import { FiChevronDown, FiX } from 'react-icons/fi';
-
-import { useRecoilState } from 'recoil';
-import OverlayMenu from 'overlaymenu';
-import { createRef, useEffect, useRef, useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import StoryList from '@components/old/StoryList';
 import { useTheme } from 'next-themes';
 import Card from './card';
+import Selector from './selector';
+import CustomStoriesDialog from './custom-stories-dialog';
 
 const languageList = [
   'English',
@@ -23,83 +26,11 @@ const languageList = [
   'Urdu',
 ];
 
-const Selector = ({
-  visible,
-  setVisible,
-  onSelect,
-  optionList,
-  title,
-  selected,
-}) => {
-  const ref = useRef();
-
-  const refs = optionList.map(() => createRef());
-
-  useEffect(
-    () =>
-      refs[selected].current &&
-      refs[selected].current.scrollIntoView({
-        block: 'center',
-      }),
-    [refs]
-  );
-  return (
-    <OverlayMenu visible={visible} setVisible={setVisible} container_ref={ref}>
-      <motion.div
-        transition={{ duration: 0.2 }}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        className="flex justify-center items-center backdrop-blur-sm fixed w-full h-full z-20 bg-opacity-25 left-0 font-rhodium_libre cursor-pointer"
-      >
-        <motion.div
-          whileTap={{ y: 2 }}
-          className="right-6 top-6 bg-primary-300 absolute p-1 text-2xl rounded-full hover:bg-primary-400"
-        >
-          <FiX />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          ref={ref}
-          className="bg-white dark:bg-dark-primary-50  max-h-[30vh] flex flex-col min-w-[13rem] cursor-auto rounded-md overflow-hidden shadow-xl relative bottom-20"
-        >
-          <div className="flex bg-primary-900 text-white p-2 font-bold tracking-wider pb-1">
-            {title}
-          </div>
-          <div className="flex-1 flex flex-col overflow-y-auto">
-            {optionList.map((option, index) => (
-              <motion.div
-                ref={refs[index]}
-                whileTap={{ y: 2 }}
-                key={option}
-                className={classNames(
-                  'flex justify-between items-center hover:bg-gray-200  relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer dark:hover:bg-gray-700 dark:hover:text-white',
-                  {
-                    'bg-primary-200 dark:bg-gray-700 dark:text-white':
-                      selected === index,
-                  }
-                )}
-                onClick={() => {
-                  onSelect(index);
-                  setVisible(false);
-                }}
-              >
-                <span>{option}</span>
-                {/* Lesson {index + 1} */}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </motion.div>
-    </OverlayMenu>
-  );
-};
-
 const Header = ({
   index = 0,
   lsnIndex = 0,
   storyIndex = 0,
+  customStoryIndex = 0,
   speed = { speed: 0 },
   accuracy = 100,
   isWithLesson = false,
@@ -114,8 +45,9 @@ const Header = ({
   const [lessonModal, setLessonModal] = useState(false);
   const [languageModal, setLanguageModal] = useState(false);
   const [storiesModal, setStoriesModal] = useState(false);
-
+  const [customStoriesModal, setCustomStoriesModal] = useState(false);
   const { theme, setTheme } = useTheme();
+  const customStories = useRecoilValue(customStoriesContext);
 
   useEffect(() => {
     setTheme(configs.Dark ? 'dark' : 'light');
@@ -170,6 +102,11 @@ const Header = ({
         title="Story"
       />
 
+      <CustomStoriesDialog
+        visible={customStoriesModal}
+        setVisible={setCustomStoriesModal}
+      />
+
       <div className="flex justify-center z-10">
         <div className="flex gap-6 w-full max-w-screen-xl p-3 py-6">
           <span className="flex flex-col fixed text-base font-redressed tracking-wider gap-1 left-6 top-32">
@@ -206,7 +143,7 @@ const Header = ({
                   <h1 className="text-2xl font-resique cursor-pointer select-none inline-flex relative">
                     <span className="whitespace-pre">Typing Guru</span>
                     <span className="font-rhodium_libre text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-5px)] right-0 capitalize">
-                      {page}
+                      {` ${page}`}
                     </span>
                   </h1>
                 </a>
@@ -299,6 +236,22 @@ const Header = ({
                       }}
                     >
                       {`Story ${storyIndex + 1}`}
+                      <FiChevronDown />
+                    </motion.div>
+                  )}
+                  {isWithCustomStories && (
+                    <motion.div
+                      whileTap={{ y: 2 }}
+                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
+                      onClick={() => {
+                        setCustomStoriesModal((s) => !s);
+                      }}
+                    >
+                      <span className="truncate max-w-[8rem]">
+                        {customStories[customStoryIndex]
+                          ? `Story ${customStories[customStoryIndex].name}`
+                          : 'Select Story'}
+                      </span>
                       <FiChevronDown />
                     </motion.div>
                   )}

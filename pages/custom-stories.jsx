@@ -3,17 +3,20 @@ import Footer from '@components/atoms/footer';
 import { motion } from 'framer-motion';
 import { createRef, useEffect, useState } from 'react';
 import Keyboard from '@components/templates/keyboard';
-import { useRecoilState } from 'recoil';
-import { configsContext } from '@commons/context/recoil-context';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import {
+  configsContext,
+  customStoriesContext,
+} from '@commons/context/recoil-context';
 import { shiftOnKeyList } from '@components/lessons';
 import classNames from 'classnames';
-import StoryList from '@components/old/StoryList';
 import CBody from '@components/atoms/cbody';
 
 const CustomStories = () => {
   const inpRef = createRef();
 
   const [configs, setConfigs] = useRecoilState(configsContext);
+  const customStories = useRecoilValue(customStoriesContext);
 
   useEffect(() => {
     if (configs.storyIndex === undefined) {
@@ -26,7 +29,11 @@ const CustomStories = () => {
   const [activeKey, setactiveKey] = useState(null);
 
   const [grandString, setGrandString] = useState(
-    StoryList[configs.storyIndex] || 0
+    customStories.length > 0
+      ? customStories[configs.customStoryIndex || 0]
+        ? customStories[configs.customStoryIndex || 0].story_text
+        : ''
+      : ''
   );
 
   const [mainString, setmainString] = useState('');
@@ -75,6 +82,9 @@ const CustomStories = () => {
   }, [index, mainString, refresh]);
 
   useEffect(() => {
+    if (configs.isModalOpen) {
+      return;
+    }
     if (inpRef.current) inpRef.current.focus();
     if (!grandString) {
       // setgrandString();
@@ -82,7 +92,7 @@ const CustomStories = () => {
     }
     // setindex(0);
     setmainString(grandString.substring(mainIndex, mainIndex + strLen));
-  }, [mainIndex, refresh]);
+  }, [mainIndex, refresh, configs.isModalOpen]);
 
   const [speed, setspeed] = useState(null);
 
@@ -160,28 +170,32 @@ const CustomStories = () => {
   };
 
   useEffect(() => {
-    setGrandString(StoryList[configs.storyIndex]);
+    setGrandString(
+      customStories.length > 0
+        ? customStories[configs.customStoryIndex || 0]
+          ? customStories[configs.customStoryIndex || 0].story_text
+          : ''
+        : ''
+    );
+
     setindex(0);
     setMainIndex(0);
     setRefresh((s) => !s);
     setspeed(null);
-  }, [configs.storyIndex]);
+  }, [configs.customStoryIndex]);
 
   return (
     <CBody>
       <Header
         {...{
           index,
-          storyIndex: configs.storyIndex,
+          customStoryIndex: configs.customStoryIndex,
           speed,
           accuracy,
           page: 'Custom Stories',
         }}
-        isWithStories
+        isWithCustomStories
       />
-      <div className="flex justify-center w-full z-50 text-red-500 font-bold font-redressed tracking-widest text-lg">
-        This Feature is under development.
-      </div>
       <div
         className={classNames('flex flex-col items-center py-12 gap-6 flex-1', {
           'justify-center relative pb-24': !configs.Keyboard,
@@ -223,6 +237,7 @@ const CustomStories = () => {
               onKeyPress={handleKeyPress}
               ref={inpRef}
               onBlur={() => {
+                if (configs.isModalOpen) return;
                 inpRef.current.focus();
               }}
             />

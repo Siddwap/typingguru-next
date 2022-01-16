@@ -41,7 +41,7 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
             return {
               ...stry,
               name: vals.name,
-              story_text: vals.story_text,
+              story_text: vals.story_text.replace(/(\r\n|\n|\r)/gm, ' '),
             };
           }
           return stry;

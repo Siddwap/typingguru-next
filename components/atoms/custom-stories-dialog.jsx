@@ -112,9 +112,10 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
                     <div
                       key={story.id}
                       className={classNames(
-                        'flex gap-6 p-2 hover:bg-slate-100 cursor-pointer rouded-sm',
+                        'flex gap-6 p-2 hover:bg-slate-100 dark:hover:bg-[#141719] cursor-pointer rouded-sm',
                         {
-                          'bg-slate-200': configs.customStoryIndex === index,
+                          'bg-slate-200 dark:bg-[#242729]':
+                            configs.customStoryIndex === index,
                         }
                       )}
                       onClick={(e) => {

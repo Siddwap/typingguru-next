@@ -263,7 +263,7 @@ const Header = ({
 
                 <div className="flex flex-col gap-2 py-1">
                   {['Keyboard', 'Hands', 'Dark'].map((item) => {
-                    const iconClass = 'text-xl relative bottom-1';
+                    const iconClass = 'text-xl relative';
                     if (item === 'Hands' && !configs.Keyboard) {
                       return null;
                     }
@@ -292,7 +292,7 @@ const Header = ({
                 {!isRandomType && (
                   <div className="flex flex-col py-1 gap-2">
                     {['Progress', 'Speed', 'Accuracy'].map((item) => {
-                      const iconClass = 'text-xl relative bottom-1';
+                      const iconClass = 'text-xl relative';
                       return (
                         <motion.div
                           whileTap={{ y: 2 }}

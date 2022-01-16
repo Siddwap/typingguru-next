@@ -184,7 +184,7 @@ const CustomStories = () => {
     setMainIndex(0);
     setRefresh((s) => !s);
     setspeed(null);
-  }, [configs.customStoryIndex]);
+  }, [configs.customStoryIndex, customStories]);
 
   return (
     <CBody>

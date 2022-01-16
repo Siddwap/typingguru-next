@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useRef, useState } from 'react';
 import * as Yup from 'yup';
 import OverlayMenu from 'overlaymenu';
 import {
@@ -41,7 +41,9 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
             return {
               ...stry,
               name: vals.name,
-              story_text: vals.story_text.replace(/(\r\n|\n|\r)/gm, ' '),
+              story_text: vals.story_text
+                .replace(/(\r\n|\n|\r)/gm, ' ')
+                .replaceAll('  ', ' '),
             };
           }
           return stry;
@@ -104,6 +106,8 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
                   </div>
                 )}
                 {customStories.map((story, index) => {
+                  const iRef = createRef();
+                  const iRef2 = createRef();
                   return (
                     <div
                       key={story.id}
@@ -113,7 +117,15 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
                           'bg-slate-200': configs.customStoryIndex === index,
                         }
                       )}
-                      onClick={() => {
+                      onClick={(e) => {
+                        if (
+                          e.target === iRef.current ||
+                          e.target === iRef2.current ||
+                          (iRef.current && iRef.current.contains(e.target)) ||
+                          (iRef2.current && iRef2.current.contains(e.target))
+                        ) {
+                          return;
+                        }
                         setConfigs((s) => ({ ...s, customStoryIndex: index }));
                         setVisible(false);
                       }}
@@ -131,6 +143,7 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
                             setIsUpdateMode(true);
                             setValues(story);
                           }}
+                          ref={iRef}
                         >
                           <FiEdit />
                         </div>
@@ -142,6 +155,7 @@ const CustomStoriesDialog = ({ visible, setVisible }) => {
                               s.filter((st) => st.id !== story.id)
                             );
                           }}
+                          ref={iRef2}
                         >
                           <FiTrash />
                         </div>

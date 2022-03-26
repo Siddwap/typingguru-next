@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import useForm from '@components/hooks/use-form';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Input = ({ label, placeholder, ...etc }) => {
   return (
@@ -31,14 +32,23 @@ const Issues = () => {
       email: Yup.string().email('Invalid email').required('Email is required'),
       message: Yup.string().required('Message is required'),
     }),
-    onSubmit: (vals) => {
-      toast.success('Something went wrong, try again later');
-
-      // setValues({
-      //   name: '',
-      //   email: '',
-      //   message: '',
-      // });
+    onSubmit: async (vals) => {
+      try {
+        await axios({
+          method: 'post',
+          url: '/api/issues',
+          data: vals,
+        });
+        toast.success('Something went wrong, try again later');
+      } catch (err) {
+        toast.error('Something went wrong, try again later');
+        console.log(err);
+      }
+      setValues({
+        name: '',
+        email: '',
+        message: '',
+      });
 
       console.log(vals);
     },

@@ -5,6 +5,8 @@ import { SafeHydrate } from '@commons/helpers/ssr-utils';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -26,6 +28,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <ThemeProvider attribute="class">
+      <ToastContainer />
       <Head>
         <title>Typing Guru</title>
         <meta name="theme-color" content="#000000" />

@@ -39,7 +39,7 @@ const Issues = () => {
           url: '/api/issues',
           data: vals,
         });
-        toast.success('Something went wrong, try again later');
+        toast.success('Issue/Feedback reported successfully');
       } catch (err) {
         toast.error('Something went wrong, try again later');
         console.log(err);

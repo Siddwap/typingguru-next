@@ -29,7 +29,8 @@ const handler = async (req, res) => {
   if (req.method === 'POST') {
     console.log(req.body);
     await createIssue(req.body);
-    res.status(200).send('Success');
+    // res.status(200).send('Success');
+    res.send({ message: 'Success' });
 
     // Process a POST request
   }

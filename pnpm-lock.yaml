@@ -42,7 +42,7 @@ specifiers:
   yup: ^0.32.11
 
 dependencies:
-  airtable: 0.11.2
+  airtable: 0.11.4
   axios: 0.24.0
   classnames: 2.3.1
   firebase: 9.6.5
@@ -63,7 +63,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.16.7
   '@babel/eslint-parser': 7.16.5_@babel+core@7.16.7+eslint@7.32.0
-  '@madhouselabs/eslint-config-next': 1.0.0_ab663afd093c5ed7a2c8d4d25fe5c081
+  '@madhouselabs/eslint-config-next': registry.npmjs.org/@madhouselabs/eslint-config-next/1.0.0_ab663afd093c5ed7a2c8d4d25fe5c081
   autoprefixer: 10.4.1_postcss@8.4.5
   eslint: 7.32.0
   eslint-config-airbnb: 18.2.1_fe07f8fb878b9aef736083e2da35c7e5
@@ -939,37 +939,6 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@madhouselabs/eslint-config-next/1.0.0_ab663afd093c5ed7a2c8d4d25fe5c081:
-    resolution: {integrity: sha512-0JiELH/td8kbR+w9zKcqZvNrruSCSOzQK2sBIcqpQvp26onZPCWhF7xM8HmrbAuKpheqhet3PQijOh3YzVLZXA==, registry: https://gitlab.com/api/v4/packages/npm/}
-    peerDependencies:
-      '@babel/core': ^7.15.0
-      '@babel/eslint-parser': ^7.15.0
-      eslint: ^7.32.0
-      eslint-config-airbnb: ^18.2.1
-      eslint-config-prettier: ^8.3.0
-      eslint-import-resolver-node: ^0.3.4
-      eslint-import-resolver-webpack: ^0.13.1
-      eslint-plugin-import: ^2.24.1
-      eslint-plugin-jsx-a11y: ^6.4.1
-      eslint-plugin-prettier: ^3.4.0
-      eslint-plugin-react: ^7.24.0
-      eslint-plugin-react-hooks: ^4.2.0
-      prettier: ^2.3.2
-    dependencies:
-      '@babel/core': 7.16.7
-      '@babel/eslint-parser': 7.16.5_@babel+core@7.16.7+eslint@7.32.0
-      eslint: 7.32.0
-      eslint-config-airbnb: 18.2.1_fe07f8fb878b9aef736083e2da35c7e5
-      eslint-config-prettier: 8.3.0_eslint@7.32.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-plugin-import: 2.25.4_eslint@7.32.0
-      eslint-plugin-jsx-a11y: 6.5.1_eslint@7.32.0
-      eslint-plugin-prettier: 3.4.1_6e6a25a49a944db0fa38418c3ba4bc86
-      eslint-plugin-react: 7.28.0_eslint@7.32.0
-      eslint-plugin-react-hooks: 4.3.0_eslint@7.32.0
-      prettier: 2.5.1
-    dev: true
-
   /@napi-rs/triples/1.0.3:
     resolution: {integrity: sha512-jDJTpta+P4p1NZTFVLHJ/TLFVYVcOqv6l8xwOeBKNPMgY/zDYH/YH7SJbvrr/h1RcS9GzbPcLKGzpuK9cV56UA==}
     dev: false
@@ -1190,13 +1159,12 @@ packages:
     resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: false
 
-<<<<<<< Updated upstream
-  /@types/node/14.18.12:
-    resolution: {integrity: sha512-q4jlIR71hUpWTnGhXWcakgkZeHa3CCjcQcnuzU8M891BAWA2jHiziiWEPEkdS5pFsz7H9HJiy8BrK7tBRNrY7A==}
-=======
   /@types/long/4.0.1:
     resolution: {integrity: sha512-5tXH6Bx/kNGd3MgffdmP4dy2Z+G4eaXw0SE81Tq3BNadtnMR5/ySMzX4SLEzHJzSmPNn4HIdpQsBvXMUykr58w==}
->>>>>>> Stashed changes
+    dev: false
+
+  /@types/node/14.18.18:
+    resolution: {integrity: sha512-B9EoJFjhqcQ9OmQrNorItO+OwEOORNn3S31WuiHvZY/dm9ajkB7AKD/8toessEtHHNL+58jofbq7hMMY9v4yig==}
     dev: false
 
   /@types/node/17.0.8:
@@ -1273,11 +1241,11 @@ packages:
     hasBin: true
     dev: false
 
-  /airtable/0.11.2:
-    resolution: {integrity: sha512-2kYULLdnqa7ZpaWXXfLTNKMzU+BTUBOZ6TPGahpH3KfJB9Sl18ih0v0zV1PIvpDxTWq+u76jGMAya9NDVZJT/Q==}
+  /airtable/0.11.4:
+    resolution: {integrity: sha512-y8sEi/sMEdgtgvv0V8AhJyFQB9za+6qGIxllt60Ey5ELBgu+bNEc1hjY2aqzp9C38p0ORfaeRS5RSFWlcq11Aw==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      '@types/node': 14.18.12
+      '@types/node': 14.18.18
       abort-controller: 3.0.0
       abortcontroller-polyfill: 1.7.3
       lodash: 4.17.21
@@ -4543,8 +4511,6 @@ packages:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
     dev: false
 
-<<<<<<< Updated upstream
-=======
   /websocket-driver/0.7.4:
     resolution: {integrity: sha512-b17KeDIQVjvb0ssuSDF2cYXSg2iztliJ4B9WdsuB6J952qCPKmnVq4DyW5motImXHDC1cBT/1UezrJVsKw5zjg==}
     engines: {node: '>=0.8.0'}
@@ -4563,7 +4529,6 @@ packages:
     resolution: {integrity: sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==}
     dev: false
 
->>>>>>> Stashed changes
   /whatwg-url/5.0.0:
     resolution: {integrity: sha1-lmRU6HZUYuN2RNNib2dCzotwll0=}
     dependencies:
@@ -4691,3 +4656,37 @@ packages:
       property-expr: 2.0.5
       toposort: 2.0.2
     dev: false
+
+  registry.npmjs.org/@madhouselabs/eslint-config-next/1.0.0_ab663afd093c5ed7a2c8d4d25fe5c081:
+    resolution: {integrity: sha512-0JiELH/td8kbR+w9zKcqZvNrruSCSOzQK2sBIcqpQvp26onZPCWhF7xM8HmrbAuKpheqhet3PQijOh3YzVLZXA==, registry: https://gitlab.com/api/v4/packages/npm/, tarball: https://registry.npmjs.org/@madhouselabs/eslint-config-next/-/eslint-config-next-1.0.0.tgz}
+    id: registry.npmjs.org/@madhouselabs/eslint-config-next/1.0.0
+    name: '@madhouselabs/eslint-config-next'
+    version: 1.0.0
+    peerDependencies:
+      '@babel/core': ^7.15.0
+      '@babel/eslint-parser': ^7.15.0
+      eslint: ^7.32.0
+      eslint-config-airbnb: ^18.2.1
+      eslint-config-prettier: ^8.3.0
+      eslint-import-resolver-node: ^0.3.4
+      eslint-import-resolver-webpack: ^0.13.1
+      eslint-plugin-import: ^2.24.1
+      eslint-plugin-jsx-a11y: ^6.4.1
+      eslint-plugin-prettier: ^3.4.0
+      eslint-plugin-react: ^7.24.0
+      eslint-plugin-react-hooks: ^4.2.0
+      prettier: ^2.3.2
+    dependencies:
+      '@babel/core': 7.16.7
+      '@babel/eslint-parser': 7.16.5_@babel+core@7.16.7+eslint@7.32.0
+      eslint: 7.32.0
+      eslint-config-airbnb: 18.2.1_fe07f8fb878b9aef736083e2da35c7e5
+      eslint-config-prettier: 8.3.0_eslint@7.32.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-plugin-import: 2.25.4_eslint@7.32.0
+      eslint-plugin-jsx-a11y: 6.5.1_eslint@7.32.0
+      eslint-plugin-prettier: 3.4.1_6e6a25a49a944db0fa38418c3ba4bc86
+      eslint-plugin-react: 7.28.0_eslint@7.32.0
+      eslint-plugin-react-hooks: 4.3.0_eslint@7.32.0
+      prettier: 2.5.1
+    dev: true

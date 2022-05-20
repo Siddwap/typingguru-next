@@ -97,7 +97,7 @@ const Issues = () => {
                 rows={5}
                 placeholder="Message"
                 value={values.message}
-                onChange={handleChange('message')}
+               onChange={handleChange('message')}
               />
             </div>
           </div>
@@ -111,7 +111,7 @@ const Issues = () => {
             </motion.button>
           </div>
         </form>
-     </div>
+      </div>
       <Footer />
     </CBody>
   );

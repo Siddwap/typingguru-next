@@ -111,7 +111,7 @@ const Issues = () => {
             </motion.button>
           </div>
         </form>
-      </div>
+     </div>
       <Footer />
     </CBody>
   );

@@ -34,8 +34,8 @@ const CustomStories = () => {
     customStories.length > 0
       ? customStories[configs.customStoryIndex || 0]
         ? customStories[configs.customStoryIndex || 0].story_text
-        : ''
-      : ''
+        : 'No Stories Present Add some'
+      : 'No Stories Present Add some'
   );
 
   const [mainString, setmainString] = useState('');

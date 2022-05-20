@@ -66,7 +66,7 @@ const Selector = ({
                   setVisible(false);
                 }}
               >
-                <span>{option}</span>
+                <span className="flex-1">{option}</span>
                 {/* Lesson {index + 1} */}
               </motion.div>
             ))}

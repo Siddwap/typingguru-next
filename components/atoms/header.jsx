@@ -6,13 +6,14 @@ import lessonList from '@components/lessons/lesson-list';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { MdCheckBoxOutlineBlank, MdOutlineCheckBox } from 'react-icons/md';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown, FiCircle } from 'react-icons/fi';
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useTheme } from 'next-themes';
 import { usePersistentRecoilState } from '@components/hooks/use-recoil-presist';
 import StoryList from '@components/lessons/story-list';
+import { FaCircle } from 'react-icons/fa';
 import Card from './card';
 import Selector from './selector';
 import CustomStoriesDialog from './custom-stories-dialog';
@@ -47,7 +48,7 @@ const Header = ({
   const [languageModal, setLanguageModal] = useState(false);
   const [storiesModal, setStoriesModal] = useState(false);
   const [customStoriesModal, setCustomStoriesModal] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   const customStories = useRecoilValue(customStoriesContext());
 
   useEffect(() => {
@@ -59,7 +60,18 @@ const Header = ({
       <Selector
         visible={lessonModal}
         setVisible={setLessonModal}
-        optionList={lessonList.map((_, i) => `Lesson ${i + 1}`)}
+        optionList={lessonList.map((_, i) => (
+          <div className="flex items-center justify-between" key={_}>
+            <span>Lesson {i + 1}</span>
+            <span className="text-slate-500 font-redressed">
+              {i + 1 <= 12 && 'Middle'}
+
+              {i + 1 > 12 && i + 1 <= 26 && 'Top'}
+              {i + 1 > 26 && i + 1 <= 36 && 'Bottom'}
+              {i + 1 > 36 && 'All'}
+            </span>
+          </div>
+        ))}
         onSelect={(val) => {
           setConfigs((prev) => ({
             ...prev,
@@ -72,7 +84,11 @@ const Header = ({
       <Selector
         visible={languageModal}
         setVisible={setLanguageModal}
-        optionList={languageList}
+        optionList={languageList.map((l) => (
+          <span key={l} className="flex items-center">
+            {l}
+          </span>
+        ))}
         onSelect={(val) => {
           setConfigs((prev) => ({
             ...prev,
@@ -92,7 +108,11 @@ const Header = ({
       <Selector
         visible={storiesModal}
         setVisible={setStoriesModal}
-        optionList={StoryList.map((_, i) => `Story${i + 1}`)}
+        optionList={StoryList.map((_, i) => (
+          <span className="flex" key={_}>
+            Story {i + 1}
+          </span>
+        ))}
         onSelect={(val) => {
           setConfigs((prev) => ({
             ...prev,
@@ -137,6 +157,51 @@ const Header = ({
             </div>
           </span>
 
+          {isWithLesson && (
+            <span className="flex flex-col fixed text-base font-redressed tracking-wider gap-1 right-6 top-32">
+              <span className="relative -left-3">Keyboard Row</span>
+              <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900">
+                {[
+                  { label: 'Middle', index: 0, indexTo: 11 },
+                  { label: 'Top', index: 12, indexTo: 25 },
+                  { label: 'Bottom', index: 26, indexTo: 35 },
+                  { label: 'All', index: 36, indexTo: 49 },
+                ].map(({ label, index: _index, indexTo }) => (
+                  <span
+                    onClick={() =>
+                      setConfigs((s) => ({
+                        ...s,
+                        lsnIndex: _index,
+                      }))
+                    }
+                    key={label}
+                    className={classNames(
+                      'hover:text-primary-500 flex gap-2  items-center cursor-pointer',
+                      {
+                        'text-red-900 dark:text-dark-red-900':
+                          page.toLowerCase() === label.toLowerCase(),
+                      }
+                    )}
+                  >
+                    <span>-&gt;</span>
+                    {configs.lsnIndex >= _index &&
+                    configs.lsnIndex <= indexTo ? (
+                      <span className="text-sm">
+                        <FaCircle />
+                      </span>
+                    ) : (
+                      <span className="text-sm">
+                        <FiCircle />
+                      </span>
+                    )}
+
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </span>
+          )}
+
           <div className="flex w-full">
             <div className="flex-1 relative">
               <Link href="/">
@@ -157,7 +222,6 @@ const Header = ({
                   <>
                     {configs.Progress && (
                       <Card
-                        cardId="1"
                         varient="sm"
                         className="font-redressed px-8 w-[10rem]"
                       >
@@ -176,7 +240,6 @@ const Header = ({
                     )}
                     {configs.Speed && (
                       <Card
-                        cardId="12"
                         varient="sm"
                         className="font-redressed px-8 w-[10rem]"
                       >
@@ -193,7 +256,6 @@ const Header = ({
 
                     {configs.Accuracy && (
                       <Card
-                        cardId="123"
                         varient="sm"
                         className="font-redressed px-8 w-[10rem]"
                       >

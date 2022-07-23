@@ -1,11 +1,19 @@
+import path from 'path';
+
 const express = require('express')
 
 const app = express();
-app.use(express.static(`${__dirname}/build`));
+
+
+
+app.use(express.static(path.join(__dirname,"out")));
+
+
 
 app.get('/healthy', (req, res) => {
-  res.send(__dirname);
+  res.send("ok");
 });
+
 
 const port = 5876;
 

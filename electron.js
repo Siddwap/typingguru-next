@@ -9,15 +9,17 @@ const isDev = require('electron-is-dev');
 const server = require('./server');
 // const { appendFile } = require('fs');
 
-server.startApp();
 
 // require('@electron/remote/main').initialize();
-
 function createWindow() {
+  // const mainScreen = screen.getPrimaryDisplay().size
+
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    center:true,
+    // width: mainScreen.width,
+    // height:mainScreen.height,
+    // height: 600,
     // webPreferences: {
     //   nodeIntegration: true,
     //   enableRemoteModule: true,
@@ -29,15 +31,12 @@ function createWindow() {
 
   win.setMenuBarVisibility(false);
 
-  win.loadURL(
-    isDev
-      ? 'http://localhost:5876'
-      : // : `file://${path.join(__dirname, '../build/index.html')}`
-        `http://localhost:5876`
-  );
+  win.loadURL('http://localhost:5876');
 }
 
-app.on('ready', createWindow);
+app.whenReady().then(()=>server.startApp().then(()=>createWindow()))
+
+// app.on('ready',server.startApp().then(()=>createWindow()));
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

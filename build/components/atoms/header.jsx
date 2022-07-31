@@ -56,7 +56,7 @@ const Header = ({
   }, [configs.Dark]);
 
   return (
-    <>
+    <div className="text-sm">
       <Selector
         visible={lessonModal}
         setVisible={setLessonModal}
@@ -130,11 +130,11 @@ const Header = ({
 
       <div className="flex justify-center z-10">
         <div className="flex gap-6 w-full max-w-screen-xl p-3 py-6">
-          <span className="flex flex-col fixed text-base font-redressed tracking-wider gap-1 left-6 top-32">
+          <span className="flex flex-col fixed text-sm font-redressed tracking-wider gap-1 left-6 top-32">
             <Link href="/">
               <a className="hover:text-primary-500 relative -left-3">Home</a>
             </Link>
-            <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900">
+            <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900 text-xs">
               {[
                 { link: '/lessons', label: 'Lessons' },
                 { link: '/stories', label: 'Stories' },
@@ -158,9 +158,9 @@ const Header = ({
           </span>
 
           {isWithLesson && (
-            <span className="flex flex-col fixed text-base font-redressed tracking-wider gap-1 right-6 top-32">
+            <span className="flex flex-col fixed text-sm font-redressed tracking-wider gap-1 right-6 top-32">
               <span className="relative -left-3">Keyboard Row</span>
-              <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900">
+              <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900 text-xs">
                 {[
                   { label: 'Middle', index: 0, indexTo: 11 },
                   { label: 'Top', index: 12, indexTo: 25 },
@@ -186,11 +186,11 @@ const Header = ({
                     <span>-&gt;</span>
                     {configs.lsnIndex >= _index &&
                     configs.lsnIndex <= indexTo ? (
-                      <span className="text-sm">
+                      <span className="text-xs">
                         <FaCircle />
                       </span>
                     ) : (
-                      <span className="text-sm">
+                      <span className="text-xs">
                         <FiCircle />
                       </span>
                     )}
@@ -202,11 +202,11 @@ const Header = ({
             </span>
           )}
 
-          <div className="flex w-full">
+          <div className="flex w-full text-sm">
             <div className="flex-1 relative">
               <Link href="/">
                 <a>
-                  <h1 className="text-2xl font-resique cursor-pointer select-none inline-flex relative">
+                  <h1 className="text-xl font-resique cursor-pointer select-none inline-flex relative">
                     <span className="whitespace-pre">Typing Guru</span>
                     <span className="font-lato text-xs font-bold text-primary-500 tracking-wider absolute top-[calc(100%-5px)] right-0 capitalize">
                       {` ${page}`}
@@ -228,11 +228,16 @@ const Header = ({
                         <div>Progress</div>
 
                         <div className="text-right my-1">
-                          <span className="text-3xl">
-                            {(
-                              (index / lessonList[lsnIndex].length) *
-                              100
-                            ).toFixed(0)}
+                          <span className="text-xl">
+                            {page === 'stories'
+                              ? (
+                                  (index / StoryList[storyIndex].length) *
+                                  100
+                                ).toFixed(0)
+                              : (
+                                  (index / lessonList[lsnIndex].length) *
+                                  100
+                                ).toFixed(0)}
                           </span>{' '}
                           <span>% done</span>
                         </div>
@@ -245,7 +250,7 @@ const Header = ({
                       >
                         <div>Speed</div>
                         <div className="text-right my-1">
-                          <span className="text-3xl">
+                          <span className="text-xl">
                             {(speed && (speed.speed > 300 ? 0 : speed.speed)) ||
                               0}
                           </span>{' '}
@@ -261,7 +266,7 @@ const Header = ({
                       >
                         <div>Accuracy</div>
                         <div className="text-right my-1">
-                          <span className="text-3xl">{accuracy}</span>{' '}
+                          <span className="text-xl">{accuracy}</span>{' '}
                           <span>%</span>
                         </div>
                       </Card>
@@ -269,10 +274,10 @@ const Header = ({
                   </>
                 )}
 
-                <div className="flex flex-col gap-3 font-lato justify-between">
+                <div className="flex flex-col gap-2 font-lato justify-start">
                   <motion.div
                     whileTap={{ y: 2 }}
-                    className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
+                    className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between text-xs"
                     onClick={() => {
                       setLanguageModal((s) => !s);
                     }}
@@ -284,7 +289,7 @@ const Header = ({
                   {isWithLesson && (
                     <motion.div
                       whileTap={{ y: 2 }}
-                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
+                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between text-xs"
                       onClick={() => {
                         setLessonModal((s) => !s);
                       }}
@@ -296,7 +301,7 @@ const Header = ({
                   {isWithStories && (
                     <motion.div
                       whileTap={{ y: 2 }}
-                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
+                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between text-xs"
                       onClick={() => {
                         setStoriesModal((s) => !s);
                       }}
@@ -308,7 +313,7 @@ const Header = ({
                   {isWithCustomStories && (
                     <motion.div
                       whileTap={{ y: 2 }}
-                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between"
+                      className="cursor-pointer border border-primary-300 select-none bg-primary-50 dark:bg-dark-primary-50 px-6 py-2 rounded-lg shadow-lg hover:border-primary-500 dark:border-dark-primary-900 flex items-center gap-2 whitespace-pre justify-between text-xs"
                       onClick={() => {
                         setCustomStoriesModal((s) => !s);
                       }}
@@ -323,7 +328,7 @@ const Header = ({
                   )}
                 </div>
 
-                <div className="flex flex-col gap-2 py-1">
+                <div className="flex flex-col gap-1 py-1">
                   {['Keyboard', 'Hands', 'Dark'].map((item) => {
                     const iconClass = 'text-xl relative';
                     if (item === 'Hands' && !configs.Keyboard) {
@@ -352,7 +357,7 @@ const Header = ({
                   })}
                 </div>
                 {!isRandomType && (
-                  <div className="flex flex-col py-1 gap-2">
+                  <div className="flex flex-col py-1 gap-1">
                     {['Progress', 'Speed', 'Accuracy'].map((item) => {
                       const iconClass = 'text-xl relative';
                       return (
@@ -383,7 +388,7 @@ const Header = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Header;

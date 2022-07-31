@@ -42,15 +42,15 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px Nepali;
+    font: 35px/35px Nepali;
   }
 
   &.story-typing * {
-    font: 30px/30px Nepali;
+    font: 25px/25px Nepali;
   }
 
   &.freeTA {
-    font: 30px/30px Nepali;
+    font: 25px/25px Nepali;
   }
 }
 .Hindi {
@@ -60,14 +60,14 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px Hindi;
+    font: 35px/35px Hindi;
   }
 
   &.story-typing {
-    font: 30px/30px Hindi;
+    font: 25px/25px Hindi;
   }
   &.freeTA {
-    font: 30px/30px Hindi;
+    font: 25px/25px Hindi;
   }
 }
 .Bengali {
@@ -77,7 +77,7 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px Bengali;
+    font: 35px/35px Bengali;
   }
   &.story-typing {
     font: 35px/35px Bengali;
@@ -93,13 +93,13 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px English;
+    font: 35px/35px English;
   }
   &.story-typing {
     @apply font-roboto_mono;
   }
   &.freeTA {
-    font: 30px/30px English;
+    font: 25px/25px English;
   }
 }
 .Punjabi {
@@ -109,13 +109,13 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px Punjabi;
+    font: 35px/35px Punjabi;
   }
   &.story-typing {
-    font: 30px/30px Punjabi;
+    font: 25px/25px Punjabi;
   }
   &.freeTA {
-    font: 30px/30px Punjabi;
+    font: 25px/25px Punjabi;
   }
 }
 .Tamil {
@@ -125,13 +125,13 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px Tamil;
+    font: 35px/35px Tamil;
   }
   &.story-typing {
-    font: 22px/22px Tamil;
+    font: 20px/20px Tamil;
   }
   &.freeTA {
-    font: 22px/22px Tamil;
+    font: 20px/20px Tamil;
   }
 }
 .Urdu {
@@ -141,13 +141,13 @@ html {
   }
 
   &.typing-view * {
-    font: 40px/40px Urdu;
+    font: 35px/35px Urdu;
   }
   &.story-typing {
     font-family: Urdu;
   }
   &.freeTA {
-    font: 30px/30px Urdu;
+    font: 25px/25px Urdu;
   }
 }
 
@@ -217,7 +217,7 @@ html {
   }
 
   @media #{$large-screen-1280-and-up} {
-    transform: scale(1.4);
+    transform: scale(1.1);
     margin-top: 6rem;
     margin-bottom: 6rem;
   }
@@ -443,7 +443,7 @@ html {
         padding-left: 0;
         position: relative;
         &::before {
-          font: 40px/40px Roboto !important;
+          font: 35px/35px Roboto !important;
           visibility: visible;
           position: absolute;
           content: "_";
@@ -453,7 +453,7 @@ html {
 
     & > input,
     & > span {
-      font: 40px/40px Roboto;
+      font: 35px/35px Roboto;
 
       // background-color: red;
       outline: none;
@@ -478,7 +478,7 @@ html {
 
 .cursor {
   &::after {
-    @apply absolute h-5 bg-primary-900 bottom-1 w-[2px] right-[calc(100%-2px)];
+    @apply absolute h-5 bg-primary-900 dark:bg-primary-300 bottom-1 w-[2px] right-[calc(100%-2px)];
     content: "";
   }
 }

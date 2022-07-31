@@ -171,7 +171,7 @@ const Stories = () => {
     <CBody>
       <Header
         {...{
-          index,
+          index: mainIndex + index,
           storyIndex: configs.storyIndex,
           speed,
           accuracy,

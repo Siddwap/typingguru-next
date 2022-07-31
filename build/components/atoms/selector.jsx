@@ -35,7 +35,7 @@ const Selector = ({
       >
         <motion.div
           whileTap={{ y: 2 }}
-          className="right-6 top-6 bg-primary-300 absolute p-1 text-2xl rounded-full hover:bg-primary-400"
+          className="right-6 top-6 bg-primary-300 absolute p-1 text-xl rounded-full hover:bg-primary-400"
         >
           <FiX />
         </motion.div>
@@ -55,7 +55,7 @@ const Selector = ({
                 whileTap={{ y: 2 }}
                 key={option}
                 className={classNames(
-                  'flex justify-between items-center hover:bg-gray-200  relative py-2 pb-1.5 px-3 text-sm text-center  cursor-pointer dark:hover:bg-gray-700 dark:hover:text-white',
+                  'flex justify-between items-center hover:bg-gray-200  relative py-2 pb-1.5 px-3 text-xs text-center  cursor-pointer dark:hover:bg-gray-700 dark:hover:text-white',
                   {
                     'bg-primary-200 dark:bg-gray-700 dark:text-white':
                       selected === index,

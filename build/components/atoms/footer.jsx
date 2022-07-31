@@ -27,7 +27,7 @@ const Footer = () => {
   useEffect(isDev ? () => {} : increasePageView, []);
 
   return (
-    <footer className="flex justify-center w-full fixed bottom-0 font-ropa_sans text-lg p-3">
+    <footer className="flex justify-center w-full fixed bottom-0 font-ropa_sans text-md p-3">
       <div className="max-w-screen-xl w-full flex justify-between">
         <div className="flex gap-1">
           &copy; {new Date().getFullYear()}{' '}

@@ -17,7 +17,7 @@ const Home = () => {
         <div className="header flex gap-6 w-full max-w-screen-xl p-3 py-6">
           <div className="flex">
             <Link href="/">
-              <h1 className="text-2xl font-resique cursor-pointer select-none">
+              <h1 className="text-xl font-resique cursor-pointer select-none">
                 Typing Guru
               </h1>
             </Link>
@@ -55,9 +55,9 @@ const Home = () => {
                 return (
                   <Link key={link} href={link}>
                     <a>
-                      <Card className="items-center justify-center min-w-[16rem] py-8">
-                        <div className="text-6xl">{icon}</div>
-                        <span className="font-redressed text-4xl">{label}</span>
+                      <Card className="items-center justify-center min-w-[12rem] py-6">
+                        <div className="text-4xl">{icon}</div>
+                        <span className="font-redressed text-2xl">{label}</span>
                       </Card>
                     </a>
                   </Link>

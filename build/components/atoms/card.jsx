@@ -9,8 +9,8 @@ const Card = ({ children, className = '', varient = 'lg' }) => (
       `bg-primary-50 dark:bg-dark-primary-50 shadow-lg rounded-xl flex flex-col select-none cursor-pointer`,
       className,
       {
-        'p-6 gap-6': varient === 'lg',
-        'p-3': varient === 'sm',
+        'p-5 gap-5': varient === 'lg',
+        'p-2': varient === 'sm',
       }
     )}
   >

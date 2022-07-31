@@ -65,12 +65,12 @@ const Issues = () => {
       <div className="flex-1 flex items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-8 p-8 rounded-md shadow-md"
+          className="flex flex-col gap-8 p-8 pt-4 rounded-md shadow-md"
         >
-          <div className="text-2xl font-medium font-resique">
+          <div className="text-xl font-medium font-resique">
             Issues / Feedback
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 text-sm">
             <Input
               label="Name"
               placeholder="Name"
@@ -97,7 +97,7 @@ const Issues = () => {
                 rows={5}
                 placeholder="Message"
                 value={values.message}
-               onChange={handleChange('message')}
+                onChange={handleChange('message')}
               />
             </div>
           </div>
@@ -105,7 +105,7 @@ const Issues = () => {
             <motion.button
               initial={{ y: 0 }}
               whileTap={{ y: 2 }}
-              className="bg-primary-500 text-white font-medium py-2 px-4 rounded-md active:bg-primary-600"
+              className="bg-primary-500 text-white font-medium py-2 px-4 rounded-md active:bg-primary-600 text-sm"
             >
               Send
             </motion.button>

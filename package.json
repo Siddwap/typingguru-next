@@ -4,7 +4,7 @@
   "author": "Abdhesh Nayak",
   "main": "electron.js",
   "scripts": {
-    "build": "cd build && npm run build",
+    "build": "cd build && npm run build-export",
     "start": "cd build && npm run start",
     "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run dev \" \"yarn electron:start\"",
     "electron:build": "npm run build && electron-builder -c.extraMetadata.main=electron.js",

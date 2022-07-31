@@ -19,8 +19,19 @@ const Footer = () => {
         sessionStorage.setItem('views', res.data.message);
         setviews(res.data.message);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    axios({
+      url: 'https://api.anayak.com.np/vcnt/?ID=typingguru_site_views',
+      method: 'get',
+    })
+      .then((res) => {
+        console.log(res.data.message);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   const isDev = process.env.NODE_ENV === 'development';
 

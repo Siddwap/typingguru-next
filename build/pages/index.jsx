@@ -5,6 +5,7 @@ import {
   FaUserGraduate,
   FaBook,
   FaRecycle,
+  FaGithub,
 } from 'react-icons/fa';
 import Link from 'next/link';
 import Footer from '@components/atoms/footer';
@@ -50,6 +51,11 @@ const Home = () => {
                   link: '/issues',
                   label: 'Issues/Feedback',
                   icon: <FaRecycle />,
+                },
+                {
+                  link: 'https://github.com/abdheshnayak/typingguru-next',
+                  label: 'Github/Code',
+                  icon: <FaGithub />,
                 },
               ].map(({ link, label, icon }) => {
                 return (

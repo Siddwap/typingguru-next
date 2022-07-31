@@ -544,7 +544,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
       className: 'key shift left',
       keyMatch: ['Shift'],
       keyMatchFun: (acKey) => {
-        return acKey.shiftKey;
+        return acKey?.shiftKey;
       },
     },
     {
@@ -665,7 +665,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
       className: 'key shift right',
       keyMatch: ['Shift'],
       keyMatchFun: (acKey) => {
-        return acKey.shiftKey;
+        return acKey?.shiftKey;
       },
     },
     {
@@ -674,7 +674,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
       className: 'key ctrl',
       keyMatch: ['Control'],
       keyMatchFun: (acKey) => {
-        return acKey.ctrlKey;
+        return acKey?.ctrlKey;
       },
     },
     {
@@ -688,7 +688,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
       className: 'key',
       keyMatch: ['Alt'],
       keyMatchFun: (acKey) => {
-        return acKey.altKey;
+        return acKey?.altKey;
       },
     },
     {
@@ -703,7 +703,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
       className: 'key',
       keyMatch: ['Alt'],
       keyMatchFun: (acKey) => {
-        return acKey.altKey;
+        return acKey?.altKey;
       },
     },
     {
@@ -723,7 +723,7 @@ function Keyboard({ activeKey: aKey, wrongKey: wKey, className, showHand }) {
       className: 'key ctrl',
       keyMatch: ['Control'],
       keyMatchFun: (acKey) => {
-        return acKey.ctrlKey;
+        return acKey?.ctrlKey;
       },
     },
   ];

@@ -156,6 +156,7 @@ const Lessons = () => {
 
   return (
     <CBody>
+      {index},{wrongInputCount}
       <Header
         {...{
           index,

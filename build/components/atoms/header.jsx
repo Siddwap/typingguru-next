@@ -266,7 +266,9 @@ const Header = ({
                       >
                         <div>Accuracy</div>
                         <div className="text-right my-1">
-                          <span className="text-xl">{accuracy}</span>{' '}
+                          <span className="text-xl">
+                            {accuracy > 0 ? accuracy : 0}
+                          </span>{' '}
                           <span>%</span>
                         </div>
                       </Card>

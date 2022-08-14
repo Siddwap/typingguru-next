@@ -1,6 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Redressed&family=Rhodium+Libre&family=Risque&family=Ropa+Sans&display=swap"); */
 
-@import "./css/keyboard/Fonts/tempStylesheet.css";
+@import "./css/keyboard/Fonts/all-languages.css";
 
 @tailwind base;
 @tailwind components;
@@ -13,18 +13,15 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 ::-webkit-scrollbar {
   @apply w-[5px] h-[5px];
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   @apply bg-gray-200 dark:bg-gray-800;
   box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.29);
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   @apply bg-primary dark:bg-primary-900 rounded-lg cursor-pointer;
 }
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary dark:bg-primary-900;
@@ -32,123 +29,6 @@ $large-screen-1280-and-up: "only screen and (min-width : #{$large-screen-1280})"
 
 html {
   @apply dark:bg-gray-800;
-}
-
-/* Fonts */
-.Nepali {
-  .letter,
-  .dual {
-    font-family: Nepali;
-  }
-
-  &.typing-view * {
-    font: 35px/35px Nepali;
-  }
-
-  &.story-typing * {
-    font: 25px/25px Nepali;
-  }
-
-  &.freeTA {
-    font: 25px/25px Nepali;
-  }
-}
-.Hindi {
-  .letter,
-  .dual {
-    font-family: Hindi;
-  }
-
-  &.typing-view * {
-    font: 35px/35px Hindi;
-  }
-
-  &.story-typing {
-    font: 25px/25px Hindi;
-  }
-  &.freeTA {
-    font: 25px/25px Hindi;
-  }
-}
-.Bengali {
-  .letter,
-  .dual {
-    font-family: Bengali;
-  }
-
-  &.typing-view * {
-    font: 35px/35px Bengali;
-  }
-  &.story-typing {
-    font: 35px/35px Bengali;
-  }
-  &.freeTA {
-    font: 35px/35px Bengali;
-  }
-}
-.English {
-  .letter,
-  .dual {
-    font-family: English;
-  }
-
-  &.typing-view * {
-    font: 35px/35px English;
-  }
-  &.story-typing {
-    @apply font-roboto_mono;
-  }
-  &.freeTA {
-    font: 25px/25px English;
-  }
-}
-.Punjabi {
-  .letter,
-  .dual {
-    font-family: Punjabi;
-  }
-
-  &.typing-view * {
-    font: 35px/35px Punjabi;
-  }
-  &.story-typing {
-    font: 25px/25px Punjabi;
-  }
-  &.freeTA {
-    font: 25px/25px Punjabi;
-  }
-}
-.Tamil {
-  .letter,
-  .dual {
-    font-family: Tamil;
-  }
-
-  &.typing-view * {
-    font: 35px/35px Tamil;
-  }
-  &.story-typing {
-    font: 20px/20px Tamil;
-  }
-  &.freeTA {
-    font: 20px/20px Tamil;
-  }
-}
-.Urdu {
-  .letter,
-  .dual {
-    font-family: Urdu;
-  }
-
-  &.typing-view * {
-    font: 35px/35px Urdu;
-  }
-  &.story-typing {
-    font-family: Urdu;
-  }
-  &.freeTA {
-    font: 25px/25px Urdu;
-  }
 }
 
 /* Keyboard */
@@ -482,3 +362,124 @@ html {
     content: "";
   }
 }
+
+
+// languages
+/* Fonts */
+.Nepali {
+  .letter,
+  .dual {
+    font-family: Nepali;
+  }
+
+  &.typing-view * {
+    font: 35px/35px Nepali;
+  }
+
+  &.story-typing * {
+    font: 25px/25px Nepali;
+  }
+
+  &.freeTA {
+    font: 25px/25px Nepali;
+  }
+}
+.Hindi {
+  .letter,
+  .dual {
+    font-family: Hindi;
+  }
+
+  &.typing-view * {
+    font: 35px/35px Hindi;
+  }
+
+  &.story-typing {
+    font: 25px/25px Hindi;
+  }
+  &.freeTA {
+    font: 25px/25px Hindi;
+  }
+}
+.Bengali {
+  .letter,
+  .dual {
+    font-family: Bengali;
+  }
+
+  &.typing-view * {
+    font: 35px/35px Bengali;
+  }
+  &.story-typing {
+    font: 35px/35px Bengali;
+  }
+  &.freeTA {
+    font: 35px/35px Bengali;
+  }
+}
+.English {
+  .letter,
+  .dual {
+    font-family: English;
+  }
+
+  &.typing-view * {
+    font: 35px/35px English;
+  }
+  &.story-typing {
+    @apply font-roboto_mono;
+  }
+  &.freeTA {
+    font: 25px/25px English;
+  }
+}
+.Punjabi {
+  .letter,
+  .dual {
+    font-family: Punjabi;
+  }
+
+  &.typing-view * {
+    font: 35px/35px Punjabi;
+  }
+  &.story-typing {
+    font: 25px/25px Punjabi;
+  }
+  &.freeTA {
+    font: 25px/25px Punjabi;
+  }
+}
+.Tamil {
+  .letter,
+  .dual {
+    font-family: Tamil;
+  }
+
+  &.typing-view * {
+    font: 35px/35px Tamil;
+  }
+  &.story-typing {
+    font: 20px/20px Tamil;
+  }
+  &.freeTA {
+    font: 20px/20px Tamil;
+  }
+}
+.Urdu {
+  .letter,
+  .dual {
+    font-family: Urdu;
+  }
+
+  &.typing-view * {
+    font: 35px/35px Urdu;
+  }
+  &.story-typing {
+    font-family: Urdu;
+  }
+  &.freeTA {
+    font: 25px/25px Urdu;
+  }
+}
+
+

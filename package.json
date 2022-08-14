@@ -1,6 +1,6 @@
 {
   "name": "Typing_Guru",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "Abdhesh Nayak",
   "main": "electron.js",
   "scripts": {

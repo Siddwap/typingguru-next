@@ -134,7 +134,7 @@ const Header = ({
             <Link href="/">
               <a className="hover:text-primary-500 relative -left-3">Home</a>
             </Link>
-            <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900 text-xs">
+            <div className="relative origin-bottom-left flex flex-col items-start border-l gap-1 border-primary-900 text-xs z-[999]">
               {[
                 { link: '/lessons', label: 'Lessons' },
                 { link: '/stories', label: 'Stories' },

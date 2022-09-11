@@ -204,7 +204,7 @@ const Stories = () => {
                       'text-red-500': errorIndex[mainIndex + indx],
                     })}
                   >
-                    {item}
+                    {item === ' ' ? <span>&nbsp;</span> : item}
                   </span>
                 );
               })}
@@ -212,7 +212,11 @@ const Stories = () => {
             <span className="relative cursor text-primary-400">
               {dispStrings.str2}
             </span>
-            <span className="text-primary-400">{dispStrings.str3}</span>
+            <span className="text-primary-400">
+              {dispStrings.str3.split('').map((item) => {
+                return item === ' ' ? <span>&nbsp;</span> : item;
+              })}
+            </span>
 
             <input
               className="opacity-0 absolute height-full w-full mx-auto my-0 left-0"
